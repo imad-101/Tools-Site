@@ -16,7 +16,7 @@ export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-gradient-to-b from-blue-100 to-blue-50 shadow-md sm:px-20">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-b from-blue-100 to-blue-50 sm:px-24">
       <div className="container flex h-16 items-center justify-between">
         {/* Mobile Menu */}
         <Sheet>
@@ -125,6 +125,7 @@ export function Header() {
           </Button>
         </div>
       </div>
+      <hr />
     </header>
   );
 }
