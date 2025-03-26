@@ -1,13 +1,21 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FeaturedTools } from "@/components/featured-tools";
-import { Newsletter } from "@/components/newsletter";
-import { Testimonials } from "@/components/testimonials";
+import { Testimonials } from "@/components/testemonials";
 import { FAQ } from "@/components/faq";
+import { Newsletter } from "@/components/newsletter";
+import {
+  ArrowRight,
+  Sparkles,
+  FileText,
+  Code,
+  Image,
+  Wrench,
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -15,9 +23,9 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50 to-slate-50">
+        <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50 to-slate-50 sm:min-h-screen">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-6">
+            <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-7">
               <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-100 text-blue-900">
                 <Sparkles className="mr-1 h-3 w-3" /> New tools added weekly
               </div>
@@ -35,7 +43,8 @@ export default function Home() {
                   className="bg-blue-600 hover:bg-blue-700"
                 >
                   <Link href="#tools">
-                    Explore Tools <ArrowRight className="ml-2 h-4 w-4" />
+                    Explore Tools{" "}
+                    <ArrowRight className=" hidden sm:block ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button
@@ -126,7 +135,8 @@ export default function Home() {
                 className="bg-blue-600 hover:bg-blue-700"
               >
                 <Link href="/tools">
-                  View All Tools <ArrowRight className="ml-2 h-4 w-4" />
+                  View All Tools{" "}
+                  <ArrowRight className=" hidden sm:block ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -136,105 +146,119 @@ export default function Home() {
         {/* Categories Section */}
         <section className="w-full py-12 md:py-24 bg-white">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-900">
+                  Categories
+                </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-slate-900">
                   Browse by Category
                 </h2>
                 <p className="max-w-[900px] text-slate-600 md:text-xl/relaxed">
-                  Find the perfect tool for your specific needs.
+                  Find the perfect tool for your specific needs
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              <Link href="/category/productivity" className="group">
-                <div className="bg-blue-50 p-6 rounded-lg text-center hover:bg-blue-100 transition-colors h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-blue-700"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-slate-900">Productivity</h3>
+
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex flex-col space-y-6">
+                  <Link
+                    href="/category/productivity"
+                    className="group flex items-center p-4 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                  >
+                    <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-blue-200 transition-colors">
+                      <FileText className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-700 transition-colors">
+                        Productivity
+                      </h3>
+                      <p className="text-slate-600 text-sm">
+                        Tools to help you work smarter and accomplish more
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 ml-4">
+                      <ArrowRight className=" hidden sm:block h-5 w-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/category/development"
+                    className="group flex items-center p-4 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                  >
+                    <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-blue-200 transition-colors">
+                      <Code className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-700 transition-colors">
+                        Development
+                      </h3>
+                      <p className="text-slate-600 text-sm">
+                        Tools for developers to streamline coding workflows
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 ml-4">
+                      <ArrowRight className=" hidden sm:block h-5 w-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-              <Link href="/category/development" className="group">
-                <div className="bg-green-50 p-6 rounded-lg text-center hover:bg-green-100 transition-colors h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-green-700"
-                    >
-                      <polyline points="16 18 22 12 16 6" />
-                      <polyline points="8 6 2 12 8 18" />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-slate-900">Development</h3>
+
+                <div className="flex flex-col space-y-6">
+                  <Link
+                    href="/category/design"
+                    className="group flex items-center p-4 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                  >
+                    <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-blue-200 transition-colors">
+                      <Image className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-700 transition-colors">
+                        Design
+                      </h3>
+                      <p className="text-slate-600 text-sm">
+                        Creative tools to bring your design ideas to life
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 ml-4">
+                      <ArrowRight className=" hidden sm:block h-5 w-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/category/utilities"
+                    className="group flex items-center p-4 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50 transition-colors"
+                  >
+                    <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-blue-200 transition-colors">
+                      <Wrench className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-1 group-hover:text-blue-700 transition-colors">
+                        Utilities
+                      </h3>
+                      <p className="text-slate-600 text-sm">
+                        Essential utilities for everyday digital tasks
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 ml-4">
+                      <ArrowRight className=" hidden sm:block h-5 w-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-              <Link href="/category/design" className="group">
-                <div className="bg-purple-50 p-6 rounded-lg text-center hover:bg-purple-100 transition-colors h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-purple-700"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <circle cx="12" cy="12" r="6" />
-                      <circle cx="12" cy="12" r="2" />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-slate-900">Design</h3>
-                </div>
-              </Link>
-              <Link href="/category/utilities" className="group">
-                <div className="bg-amber-50 p-6 rounded-lg text-center hover:bg-amber-100 transition-colors h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-amber-200 transition-colors">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-amber-700"
-                    >
-                      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-slate-900">Utilities</h3>
-                </div>
-              </Link>
+              </div>
+
+              <div className="mt-10 text-center">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-blue-200 text-blue-700 hover:bg-blue-50"
+                >
+                  <Link href="/categories">
+                    View All Categories{" "}
+                    <ArrowRight className=" hidden sm:block ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

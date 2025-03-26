@@ -36,7 +36,7 @@ export function FeaturedTools() {
       title: "Image Optimizer",
       description:
         "Compress and optimize images without losing quality. Reduce file sizes for faster websites.",
-      icon: <Image className="h-8 w-8 text-green-600" />,
+      icon: <Image className="h-8 w-8 text-blue-600" />,
       category: "design",
       badge: "New",
       badgeColor: "bg-green-100 text-green-800 border-green-200",
@@ -46,7 +46,7 @@ export function FeaturedTools() {
       title: "Code Beautifier",
       description:
         "Format and beautify code in various programming languages. Make your code more readable and maintainable.",
-      icon: <Code className="h-8 w-8 text-purple-600" />,
+      icon: <Code className="h-8 w-8 text-blue-600" />,
       category: "development",
       badge: null,
       badgeColor: "",
@@ -66,7 +66,7 @@ export function FeaturedTools() {
       title: "Color Picker",
       description:
         "Find the perfect color palette for your projects. Includes accessibility checks and color harmony tools.",
-      icon: <PenTool className="h-8 w-8 text-pink-600" />,
+      icon: <PenTool className="h-8 w-8 text-blue-600" />,
       category: "design",
       badge: null,
       badgeColor: "",
@@ -76,7 +76,7 @@ export function FeaturedTools() {
       title: "Performance Analyzer",
       description:
         "Analyze and optimize your website's performance. Get actionable insights to improve speed and user experience.",
-      icon: <Zap className="h-8 w-8 text-amber-600" />,
+      icon: <Zap className="h-8 w-8 text-blue-600" />,
       category: "development",
       badge: "Featured",
       badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
@@ -84,7 +84,7 @@ export function FeaturedTools() {
   ];
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:px-32">
       {tools.map((tool) => (
         <Card
           key={tool.id}
