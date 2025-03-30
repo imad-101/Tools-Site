@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import allTools from "@/app/allTools";
 
 interface Tool {
   id: number;
@@ -16,55 +17,22 @@ interface Tool {
   url: string;
 }
 
-const dummyTools: Tool[] = [
-  {
-    id: 1,
-    name: "Old English Converter",
-    description: "Convert modern English to old English effortlessly",
-    category: "Converters",
-    url: "/old-english-converter",
-  },
-  {
-    id: 2,
-    name: "DocSend to PDF Converter",
-    description: "Convert DocSend files to PDF format quickly and easily",
-    category: "Converters",
-    url: "/docsend-pdf-converter",
-  },
-  {
-    id: 3,
-    name: "Yourtube Music Extractor",
-    description: "Extract audio from YouTube videos to MP3 format",
-    category: "Media",
-    url: "/youtube-mp3-extractor",
-  },
-  {
-    id: 4,
-    name: "MHTML to PDF Converter",
-    description: "Convert MHTML files to PDF format",
-    category: "Converters",
-    url: "/mhtml-pdf-converter",
-  },
-  {
-    id: 5,
-    name: "Performance Analyzer",
-    description: "Analyze and optimize your website's performance",
-    category: "Analytics",
-    url: "/performance-analyzer",
-  },
-];
-
 export default function ToolsPage() {
-  const groupedTools = dummyTools.reduce(
-    (acc: { [key: string]: Tool[] }, tool) => {
+  const groupedTools = allTools
+    .map((tool) => ({
+      id: tool.id,
+      name: tool.title,
+      description: tool.description,
+      category: tool.category,
+      url: tool.href,
+    }))
+    .reduce((acc: { [key: string]: Tool[] }, tool) => {
       if (!acc[tool.category]) {
         acc[tool.category] = [];
       }
       acc[tool.category].push(tool);
       return acc;
-    },
-    {}
-  );
+    }, {});
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">

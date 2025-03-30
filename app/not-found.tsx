@@ -107,7 +107,7 @@ export default function NotFound() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="#featured">Browse All Tools</Link>
+                <Link href="/tools">Browse All Tools</Link>
               </Button>
             </div>
           </div>

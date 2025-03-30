@@ -46,6 +46,83 @@ const allTools = [
     badgeColor: "",
     href: "/docsend-to-pdf",
   },
+  {
+    id: 5,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 6,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 7,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 8,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 9,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 10,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
+  {
+    id: 11,
+    title: "DocSend to PDF Converter",
+    description:
+      "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "productivity",
+    badge: null,
+    badgeColor: "",
+    href: "/docsend-to-pdf",
+  },
 ];
 
 export default allTools;
