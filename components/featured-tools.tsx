@@ -21,7 +21,7 @@ export function FeaturedTools() {
       icon: <FileText className="h-8 w-8 text-black" />,
       category: "productivity",
       badge: "Popular",
-      badgeColor: "bg-green-100 text-green-800 border-green-200",
+      badgeColor: "bg-blue-800 text-white",
       href: "/convert-to-old-english",
     },
     {
@@ -32,7 +32,7 @@ export function FeaturedTools() {
       icon: <FileText className="h-8 w-8 text-black" />,
       category: "design",
       badge: "New",
-      badgeColor: "bg-green-100 text-green-800 border-green-200",
+      badgeColor: "bg-pink-800 text-white ",
       href: "/udf-to-pdf",
     },
     {
@@ -81,7 +81,10 @@ export function FeaturedTools() {
   ];
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:px-32">
+    <div
+      className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:px-32"
+      id="featured"
+    >
       {tools.map((tool) => (
         <Card
           key={tool.id}

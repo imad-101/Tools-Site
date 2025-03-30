@@ -50,7 +50,7 @@ export function SearchTools() {
         <Input
           type="search"
           placeholder="Search all tools..."
-          className="w-full h-14 px-6 text-lg rounded-full border-2 border-slate-200 hover:border-slate-300 focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+          className="w-full h-14 px-6 text-lg rounded-full border-2 border-slate-200 hover:border-slate-300"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}

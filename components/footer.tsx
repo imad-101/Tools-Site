@@ -7,9 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Branding and Description */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-slate-900">
-              Free Tool Now
-            </h3>
+            <h3 className="text-lg font-bold text-blue-900">Free Tool Now</h3>
             <p className="text-sm text-slate-600">
               Free online tools to simplify your workflow. Designed with
               simplicity and efficiency in mind.
@@ -22,10 +20,10 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/merger"
+                  href="/convert-to-old-english"
                   className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
-                  Word Document Merger
+                  Old English Converter
                 </Link>
               </li>
               <li>
@@ -34,6 +32,14 @@ export function Footer() {
                   className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   UDF to PDF Converter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/mhtml-to-pdf"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                >
+                  MHTML to PDF Converter
                 </Link>
               </li>
             </ul>

@@ -24,10 +24,10 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-16 md:pb-24 lg:pb-32 bg-white sm:h-[40rem]">
+        <section className="w-full py-16 md:py-24  bg-white sm:h-[44rem]">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-7">
-              <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-gray-200 text-black-900">
+              <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-800 text-black-900">
                 <Sparkles className="mr-1 h-3 w-3" /> New tools added weekly
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-6xl xl:text-6xl/none text-slate-900">
@@ -130,7 +130,7 @@ export default function Home() {
         </section>
 
         {/* Categories Section */}
-        <section className="w-full py-12 md:py-24 bg-gray-50">
+        <section className="w-full py-12 md:py-24 bg-gray-50" id="categories">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
               <div className="space-y-6">
