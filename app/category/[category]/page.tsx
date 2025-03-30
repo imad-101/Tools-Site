@@ -11,12 +11,14 @@ import { Footer } from "@/components/footer";
 import allTools from "@/app/allTools";
 import Link from "next/link";
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const normalizedCategory = params.category.toLowerCase();
+  const resolvedParams = await params;
+  const normalizedCategory = resolvedParams.category.toLowerCase();
+
   const filteredTools = allTools.filter(
     (tool) => tool.category.toLowerCase() === normalizedCategory
   );
