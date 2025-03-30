@@ -40,33 +40,30 @@ export function FAQ() {
   ];
 
   return (
-    <section id="faq" className="w-full py-12 md:py-24 bg-white">
+    <section id="faq" className="w-full py-12 md:py-24 bg-gray-50">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-900">
-              FAQ
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-slate-900">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-white inline-block rounded-lg bg-black px-3 py-1">
               Frequently Asked Questions
             </h2>
-            <p className="max-w-[900px] text-slate-600 md:text-xl/relaxed">
+            <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed">
               Find answers to common questions about our platform and tools.
             </p>
           </div>
         </div>
         <div className="mx-auto max-w-3xl py-12">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full ">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border-slate-200"
+                className="border-gray-200"
               >
-                <AccordionTrigger className="text-slate-900 hover:text-blue-600">
+                <AccordionTrigger className="text-gray-900 hover:text-gray-600  hover:no-underline text-md">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600">
+                <AccordionContent className="text-gray-600">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

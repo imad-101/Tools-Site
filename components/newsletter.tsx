@@ -17,7 +17,7 @@ export function Newsletter() {
   };
 
   return (
-    <section className="w-full py-12 md:py-24 bg-blue-50">
+    <section className="w-5/6 mx-auto py-12 md:py-24 bg-white ">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -46,7 +46,10 @@ export function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+              <Button
+                type="submit"
+                className="bg-emerald-600 hover:bg-emerald-700"
+              >
                 Subscribe
               </Button>
             </form>

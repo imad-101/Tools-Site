@@ -34,17 +34,14 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="w-full py-12 md:py-24 bg-slate-50">
+    <section id="testimonials" className="w-full py-12 md:py-24 bg-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-900">
-              Testimonials
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-slate-900">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-gray-900">
               What Our Users Say
             </h2>
-            <p className="max-w-[900px] text-slate-600 md:text-xl/relaxed">
+            <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed">
               Don't just take our word for it. Here's what people are saying
               about our tools.
             </p>
@@ -54,7 +51,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="border bg-white border-slate-200 shadow-sm"
+              className="border bg-white border-gray-200 shadow-sm"
             >
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4">
@@ -63,20 +60,20 @@ export function Testimonials() {
                       src={`/placeholder.svg?text=${testimonial.avatar}`}
                       alt={testimonial.name}
                     />
-                    <AvatarFallback className="bg-blue-100 text-blue-900">
+                    <AvatarFallback className="bg-emerald-100 text-emerald-900">
                       {testimonial.avatar}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-900">
+                    <h3 className="text-lg font-semibold text-gray-900">
                       {testimonial.name}
                     </h3>
-                    <p className="text-sm text-slate-500">{testimonial.role}</p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600">"{testimonial.content}"</p>
+                <p className="text-gray-600">"{testimonial.content}"</p>
               </CardContent>
             </Card>
           ))}

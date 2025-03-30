@@ -1,55 +1,29 @@
 import Link from "next/link";
-import { Github, Twitter, Facebook, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-slate-200">
-      <div className="container px-4 md:px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <footer className="w-full bg-white border-t border-slate-200 sm:pl-24">
+      <div className="container px-6 md:px-12 py-12 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Branding and Description */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-slate-900">ToolMaster</h3>
+            <h3 className="text-lg font-semibold text-slate-900">
+              Free Tool Now
+            </h3>
             <p className="text-sm text-slate-600">
               Free online tools to simplify your workflow. Designed with
               simplicity and efficiency in mind.
             </p>
-            <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-blue-600 transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-            </div>
           </div>
+
+          {/* Tools Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-slate-900">Tools</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/merger"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Word Document Merger
                 </Link>
@@ -57,20 +31,22 @@ export function Footer() {
               <li>
                 <Link
                   href="/udf-to-pdf"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   UDF to PDF Converter
                 </Link>
               </li>
             </ul>
           </div>
+
+          {/* Links Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-slate-900">Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/about"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   About
                 </Link>
@@ -78,7 +54,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Blog
                 </Link>
@@ -86,20 +62,22 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
+
+          {/* Legal Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-slate-900">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/privacy"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -107,7 +85,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Terms of Service
                 </Link>
@@ -115,7 +93,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/cookies"
-                  className="text-slate-600 hover:text-blue-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-600 transition-colors"
                 >
                   Cookie Policy
                 </Link>
@@ -123,9 +101,12 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
+
+        {/* Copyright */}
+        <div className="mt-8 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
           <p>
-            &copy; {new Date().getFullYear()} ToolMaster. All rights reserved.
+            &copy; {new Date().getFullYear()} Free Tool Now. All rights
+            reserved.
           </p>
         </div>
       </div>

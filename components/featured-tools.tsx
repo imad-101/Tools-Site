@@ -8,78 +8,75 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  FileText,
-  Image,
-  Code,
-  LineChart,
-  PenTool,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, FileText, Code, PenTool, Zap } from "lucide-react";
 
 export function FeaturedTools() {
   // Sample tools data - in a real app, this would come from an API or database
   const tools = [
     {
       id: 1,
-      title: "Text Formatter",
+      title: "Old English Converter",
       description:
-        "Format, clean, and transform text with various options. Perfect for content creators and developers.",
-      icon: <FileText className="h-8 w-8 text-blue-600" />,
+        "Convert modern English to old English effortlessly with our modern to old English converter.",
+      icon: <FileText className="h-8 w-8 text-black" />,
       category: "productivity",
       badge: "Popular",
-      badgeColor: "bg-amber-100 text-amber-800 border-amber-200",
+      badgeColor: "bg-green-100 text-green-800 border-green-200",
+      href: "/convert-to-old-english",
     },
     {
       id: 2,
-      title: "Image Optimizer",
+      title: "UDF to PDF Converter",
       description:
-        "Compress and optimize images without losing quality. Reduce file sizes for faster websites.",
-      icon: <Image className="h-8 w-8 text-blue-600" />,
+        "Convert UDF files to PDF format quickly and easily. Perfect for sharing and printing.",
+      icon: <FileText className="h-8 w-8 text-black" />,
       category: "design",
       badge: "New",
       badgeColor: "bg-green-100 text-green-800 border-green-200",
+      href: "/udf-to-pdf",
     },
     {
       id: 3,
-      title: "Code Beautifier",
+      title: "MHTML to PDF Converter",
       description:
-        "Format and beautify code in various programming languages. Make your code more readable and maintainable.",
-      icon: <Code className="h-8 w-8 text-blue-600" />,
+        "Convert MHTML files to PDF format quickly and easily. Perfect for sharing and printing.",
+      icon: <Code className="h-8 w-8 text-black" />,
       category: "development",
       badge: null,
       badgeColor: "",
+      href: "/mhtml-to-pdf",
     },
     {
       id: 4,
-      title: "Data Visualizer",
+      title: "DocSend to PDF Converter",
       description:
-        "Create beautiful charts and graphs from your data. Perfect for reports and presentations.",
-      icon: <LineChart className="h-8 w-8 text-blue-600" />,
+        "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
+      icon: <FileText className="h-8 w-8 text-black" />,
       category: "productivity",
       badge: null,
       badgeColor: "",
+      href: "/docsend-to-pdf",
     },
     {
       id: 5,
-      title: "Color Picker",
+      title: "Youtube Music Extractor",
       description:
-        "Find the perfect color palette for your projects. Includes accessibility checks and color harmony tools.",
-      icon: <PenTool className="h-8 w-8 text-blue-600" />,
+        "Extract audio from YouTube videos and convert them to MP3 format. Perfect for offline listening.",
+      icon: <PenTool className="h-8 w-8 text-black" />,
       category: "design",
       badge: null,
       badgeColor: "",
+      href: "/extract-youtube-music",
     },
     {
       id: 6,
       title: "Performance Analyzer",
       description:
         "Analyze and optimize your website's performance. Get actionable insights to improve speed and user experience.",
-      icon: <Zap className="h-8 w-8 text-blue-600" />,
+      icon: <Zap className="h-8 w-8 text-black" />,
       category: "development",
       badge: "Featured",
-      badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
+      badgeColor: " text-black border-black",
     },
   ];
 
@@ -88,19 +85,21 @@ export function FeaturedTools() {
       {tools.map((tool) => (
         <Card
           key={tool.id}
-          className="overflow-hidden bg-white border-slate-200 shadow-sm hover:shadow transition-shadow"
+          className="overflow-hidden bg-white border-gray-200 shadow-sm hover:shadow transition-shadow"
         >
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
-              <div className="p-2 bg-slate-100 rounded-md">{tool.icon}</div>
+              <div className="p-2 bg-gray-100 rounded-md">{tool.icon}</div>
               {tool.badge && (
                 <Badge variant="outline" className={tool.badgeColor}>
                   {tool.badge}
                 </Badge>
               )}
             </div>
-            <CardTitle className="mt-4 text-slate-900">{tool.title}</CardTitle>
-            <CardDescription className="text-slate-600">
+            <CardTitle className="mt-4 text-gray-900  text-xl my-3">
+              {tool.title}
+            </CardTitle>
+            <CardDescription className="text-gray-600">
               {tool.description}
             </CardDescription>
           </CardHeader>
@@ -108,9 +107,9 @@ export function FeaturedTools() {
             <Button
               asChild
               variant="outline"
-              className="w-full border-slate-200 text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+              className="w-full border-gray-200 text-gray-900 hover:text-gray-700 hover:bg-gray-50"
             >
-              <Link href={`/tools/${tool.id}`}>
+              <Link href={`${tool.href}`}>
                 Use Tool <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
