@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
+
 import { Home, Search } from "lucide-react";
 
 export default function NotFound() {
@@ -115,10 +115,4 @@ export default function NotFound() {
       </main>
     </div>
   );
-}
-
-interface ToolCardProps {
-  icon: React.ReactNode;
-  name: string;
-  description: string;
 }
