@@ -1,5 +1,5 @@
 // import { MhtmlToPdfConverter } from "./main";
-import MhtmlToPdfPage from "./main";
+// import MhtmlToPdfPage from "./main";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
@@ -36,7 +36,7 @@ export default function MhtmlToPdf() {
         <section className="w-full py-8 md:py-12 bg-slate-50">
           <div className="container px-4 md:px-6">
             {/* <MhtmlToPdfConverter /> */}
-            <MhtmlToPdfPage />
+            {/* <MhtmlToPdfPage /> */}
           </div>
         </section>
 
