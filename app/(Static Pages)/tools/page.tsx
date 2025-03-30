@@ -74,7 +74,7 @@ export default function ToolsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb remains same */}
 
-          <h1 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+          <h1 className="text-4xl font-bold text-white bg-gray-900 mb-12  rounded-md px-3 py-3 text-center">
             Browse All Tools
           </h1>
           {/* Breadcrumb Navigation */}

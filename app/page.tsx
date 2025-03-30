@@ -9,14 +9,8 @@ import { Testimonials } from "@/components/testemonials";
 import { FAQ } from "@/components/faq";
 import { Newsletter } from "@/components/newsletter";
 import { SearchTools } from "@/components/SearchTools";
-import {
-  ArrowRight,
-  Sparkles,
-  FileText,
-  Code,
-  Image,
-  Wrench,
-} from "lucide-react";
+import { CategoriesSection } from "@/components/Categories";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -130,122 +124,8 @@ export default function Home() {
         </section>
 
         {/* Categories Section */}
-        <section className="w-full py-12 md:py-24 bg-gray-50" id="categories">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight inline-block rounded-lg bg-black text-white px-3 py-1">
-                  Browse by Category
-                </h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed">
-                  Find the perfect tool for your specific needs
-                </p>
-              </div>
-            </div>
 
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="flex flex-col space-y-6">
-                  <Link
-                    href="/category/productivity"
-                    className="group flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-200 hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-gray-200 transition-colors">
-                      <FileText className="h-8 w-8 text-gray-600" />
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
-                        Productivity
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Tools to help you work smarter and accomplish more
-                      </p>
-                    </div>
-                    <div className="flex-shrink-0 ml-4">
-                      <ArrowRight className=" hidden sm:block h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/category/development"
-                    className="group flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-200 hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-gray-200 transition-colors">
-                      <Code className="h-8 w-8 text-gray-600" />
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
-                        Development
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Tools for developers to streamline coding workflows
-                      </p>
-                    </div>
-                    <div className="flex-shrink-0 ml-4">
-                      <ArrowRight className=" hidden sm:block h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                    </div>
-                  </Link>
-                </div>
-
-                <div className="flex flex-col space-y-6">
-                  <Link
-                    href="/category/design"
-                    className="group flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-200 hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-gray-200 transition-colors">
-                      <Image className="h-8 w-8 text-gray-600" />
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
-                        Design
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Creative tools to bring your design ideas to life
-                      </p>
-                    </div>
-                    <div className="flex-shrink-0 ml-4">
-                      <ArrowRight className=" hidden sm:block h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/category/utilities"
-                    className="group flex items-center p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-200 hover:bg-gray-50 transition-colors"
-                  >
-                    <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mr-6 group-hover:bg-gray-200 transition-colors">
-                      <Wrench className="h-8 w-8 text-gray-600" />
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
-                        Utilities
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Essential utilities for everyday digital tasks
-                      </p>
-                    </div>
-                    <div className="flex-shrink-0 ml-4">
-                      <ArrowRight className=" hidden sm:block h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="mt-10 text-center">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                >
-                  <Link href="/categories">
-                    View All Categories{" "}
-                    <ArrowRight className=" hidden sm:block ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <CategoriesSection />
         {/* Testimonials Section */}
         <Testimonials />
 
