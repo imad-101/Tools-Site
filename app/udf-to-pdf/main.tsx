@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PDFDocument, StandardFonts } from "pdf-lib";
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -77,7 +77,7 @@ export default function UdfToPdfConverter() {
 
   const handleDownload = () => {
     if (pdfBlob) {
-      saveAs(pdfBlob, `converted-${file?.name.replace(".udf", "")}.pdf`);
+      // saveAs(pdfBlob, `converted-${file?.name.replace(".udf", "")}.pdf`);
     }
   };
 
