@@ -1,27 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import { useRouter } from "next/navigation";
-import { Search, ArrowRight, LucideProps } from "lucide-react";
+import { Search, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import allTools from "@/app/allTools";
+import React from "react";
+
+// Update the Tool interface to expect icon as a JSX.Element
+interface Tool {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  category: string;
+  badge: string | null;
+  badgeColor: string;
+  href: string;
+}
 
 export function SearchTools() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<
-    {
-      id: number;
-      title: string;
-      description: string;
-      icon: React.ComponentType<LucideProps>;
-      category: string;
-      badge: string;
-      badgeColor: string;
-      href: string;
-    }[]
-  >([]);
+  const [searchResults, setSearchResults] = useState<Tool[]>([]);
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export function SearchTools() {
     }
 
     const query = searchQuery.toLowerCase();
-    const results = allTools.filter((tool) =>
+    const results = allTools.filter((tool: Tool) =>
       tool.title.toLowerCase().includes(query)
     );
     setSearchResults(results);

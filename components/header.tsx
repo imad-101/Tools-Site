@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search, X, LucideProps } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,11 +12,26 @@ import {
 } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import allTools from "@/app/allTools"; // Update import path as needed
+import React from "react";
+
+// Define the Tool interface for proper type checking
+interface Tool {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.FunctionComponentElement<
+    Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
+  >;
+  category: string;
+  badge: string;
+  badgeColor: string;
+  href: string;
+}
 
 export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Tool[]>([]);
 
   useEffect(() => {
     if (!searchQuery.trim()) {
@@ -25,8 +40,9 @@ export function Header() {
     }
 
     const query = searchQuery.toLowerCase();
-    const results = allTools.filter((tool) =>
-      tool.title.toLowerCase().includes(query)
+    const results = allTools.filter(
+      (tool): tool is Tool =>
+        tool.badge !== null && tool.title.toLowerCase().includes(query)
     );
     setSearchResults(results);
   }, [searchQuery]);

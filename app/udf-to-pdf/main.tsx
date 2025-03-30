@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/card";
 
 export default function UdfToPdfConverter() {
-  const [file, setFile] = useState<File | null>(null);
+  // const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
 
@@ -30,7 +30,7 @@ export default function UdfToPdfConverter() {
       return;
     }
 
-    setFile(uploadedFile);
+    // setFile(uploadedFile);
     setIsLoading(true);
 
     try {
