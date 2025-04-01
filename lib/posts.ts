@@ -13,7 +13,6 @@ export interface PostMeta {
   authorImage: string;
   readTime: string;
   thumbnail: string;
-  // Optional tags/categories field
   tags?: string[];
 }
 

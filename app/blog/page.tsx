@@ -1,9 +1,9 @@
 import { getSortedPostsData } from "@/lib/posts";
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import Image from "next/image";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import {
   Breadcrumb,
@@ -13,6 +13,23 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Articles & Helpful Guides | FreeToolNow",
+  description:
+    "Discover articles and helpful guides about various tools, their uses, and tips to boost your productivity.",
+  openGraph: {
+    title: "Articles & Helpful Guides | FreeToolNow",
+    description:
+      "Discover articles and helpful guides about various tools, their uses, and tips to boost your productivity.",
+    url: "https://freetoolnow.com/blog",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 function UserIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -72,7 +89,7 @@ export default function BlogPage() {
         </section>
 
         <section className="w-full py-4">
-          <div className="container px-4 md:px-6"></div>
+          <div className="container px-4 md:px-6" />
         </section>
         <section className="w-full pb-24">
           <div className="container px-4 md:px-6">

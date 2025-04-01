@@ -7,7 +7,6 @@ import rehypeRaw from "rehype-raw";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header";
@@ -82,7 +81,6 @@ const TableOfContents = ({ content }: { content: string }) => {
 };
 
 const EnhancedCodeBlock = ({
-  // renamed to indicate it's intentionally unused
   inline,
   children,
   ...props
@@ -128,18 +126,25 @@ export async function generateMetadata(context: {
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `https://yourdomain.com/blog/${slug}`,
+      url: `https://freetoolnow.com/blog/${slug}`,
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
 
 export default async function BlogPost({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  // Await the params before destructuring
+  const { slug } = await params;
+
   let post: PostData;
   try {
     post = await getPostData(slug);
