@@ -94,7 +94,7 @@ export function Header() {
             Home
           </Link>
           <Link
-            href="#categories"
+            href="/#categories"
             className="hover:text-black transition-colors"
           >
             Categories
@@ -102,17 +102,17 @@ export function Header() {
           <Link href="/tools" className="hover:text-black transition-colors">
             All Tools
           </Link>
-          <Link href="#featured" className="hover:text-black transition-colors">
-            Popular
-          </Link>
           <Link
-            href="#testimonials"
+            href="/#featured"
             className="hover:text-black transition-colors"
           >
-            Testimonials
+            Popular
           </Link>
-          <Link href="#faq" className="hover:text-black transition-colors">
-            FAQ
+          <Link href="/about" className="hover:text-black transition-colors">
+            About
+          </Link>
+          <Link href="/contact" className="hover:text-black transition-colors">
+            Support
           </Link>
           <Link href="/blog" className="hover:text-black transition-colors">
             Blog
@@ -172,7 +172,10 @@ export function Header() {
               <Search className="h-5 w-5" />
             </Button>
           )}
-          <Button asChild className="hidden sm:flex bg-black hover:bg-gray-800">
+          <Button
+            asChild
+            className="hidden sm:flex bg-gray-900 hover:bg-gray-800"
+          >
             <Link href="/contact">Contact</Link>
           </Button>
         </div>
@@ -211,18 +214,18 @@ export function Header() {
               Popular
             </Link>
             <Link
-              href="#testimonials"
+              href="/about"
               className="py-3 px-2 hover:bg-gray-50 rounded-md flex items-center text-slate-800 font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Testimonials
+              About
             </Link>
             <Link
-              href="#faq"
+              href="/contach"
               className="py-3 px-2 hover:bg-gray-50 rounded-md flex items-center text-slate-800 font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              FAQ
+              Support
             </Link>
             <Link
               href="/blog"

@@ -25,11 +25,11 @@ export default function Home() {
                 <Sparkles className="mr-1 h-3 w-3" /> New tools added weekly
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-6xl xl:text-6xl/none text-slate-900">
-                Powerful Tools to Simplify Your Workflow
+                Free Online Tools to Simplify Your Workflow
               </h1>
               <p className="text-slate-700 md:text-xl max-w-[800px]">
-                A collection of free, easy-to-use tools designed to boost your
-                productivity and streamline your daily tasks.
+                A collection of free, easy-to-use online tools designed to boost
+                your productivity and streamline your daily tasks.
               </p>
 
               <SearchTools />
@@ -53,8 +53,8 @@ export default function Home() {
                   Why Use Our Tools?
                 </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed">
-                  Designed with simplicity and efficiency in mind, my tools help
-                  you accomplish more in less time.
+                  Designed with simplicity and efficiency in mind, Our tools
+                  help you accomplish more in less time.
                 </p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function Home() {
         </section>
 
         {/* Tools Section */}
-        <section id="tools" className="w-full py-12 md:py-24 bg-white">
+        <section className="w-full py-12 md:py-24 bg-white" id="featured">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
               <div className="space-y-2">

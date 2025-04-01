@@ -7,14 +7,14 @@ export function Testimonials() {
       name: "Alex Johnson",
       role: "Web Developer",
       content:
-        "These tools have saved me countless hours of work. The interface is intuitive and the tools are powerful.",
+        "These free tools have saved me countless hours of work. The interface is intuitive and the tools are powerful.",
       avatar: "AJ",
     },
     {
       name: "Sarah Williams",
-      role: "Graphic Designer",
+      role: "Web Developer",
       content:
-        "I use ToolMaster daily for my design work. The design tools are exceptional and have become essential to my workflow.",
+        "I use ToolMaster daily for my development work. The development tools are exceptional and have become essential to my workflow.",
       avatar: "SW",
     },
     {

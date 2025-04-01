@@ -3,85 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
-import { Home, Search } from "lucide-react";
+import { Home } from "lucide-react";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="border-b border-gray-200 py-4 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <Link href="/" className="text-xl font-bold text-black">
-            Free Tool Now
-          </Link>
-
-          <nav className="flex flex-wrap gap-6">
-            <Link
-              href="/"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              href="/categories"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Categories
-            </Link>
-            <Link
-              href="/new-tools"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              New Tools
-            </Link>
-            <Link
-              href="/popular"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Popular
-            </Link>
-            <Link
-              href="/testimonials"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Testimonials
-            </Link>
-            <Link
-              href="/faq"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              FAQ
-            </Link>
-            <Link
-              href="/about"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              About
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Input
-                type="text"
-                placeholder="Search tools..."
-                className="w-full md:w-64 pr-8 rounded-full"
-              />
-              <Search className="absolute right-3 top-2.5 h-4 w-4 text-gray-400" />
-            </div>
-            <Button
-              variant="default"
-              className="bg-black text-white hover:bg-gray-800"
-            >
-              Contact
-            </Button>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
+      <Header />
       <main className="flex-1 py-16 px-6">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Error Information */}
@@ -113,6 +44,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

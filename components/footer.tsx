@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* Branding and Description */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-blue-900">Free Tool Now</h3>
+            <h3 className="text-lg font-bold text-gray-900">Free Tool Now</h3>
             <p className="text-sm text-slate-600">
               Free online tools to simplify your workflow. Designed with
               simplicity and efficiency in mind.

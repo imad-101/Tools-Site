@@ -30,7 +30,7 @@ export function FAQ() {
     {
       question: "Can I suggest a new tool?",
       answer:
-        "We welcome suggestions for new tools. You can submit your ideas through our contact form or by emailing us directly at suggestions@toolmaster.com.",
+        "We welcome suggestions for new tools. You can submit your ideas through our contact form or by emailing us directly at suggestions@freetoolnow.com.",
     },
     {
       question: "Do the tools work on mobile devices?",

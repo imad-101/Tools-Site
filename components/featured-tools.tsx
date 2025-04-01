@@ -81,10 +81,7 @@ export function FeaturedTools() {
   ];
 
   return (
-    <div
-      className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:px-32"
-      id="featured"
-    >
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:px-32">
       {tools.map((tool) => (
         <Card
           key={tool.id}
