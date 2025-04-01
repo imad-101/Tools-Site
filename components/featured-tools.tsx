@@ -21,7 +21,7 @@ export function FeaturedTools() {
       icon: <FileText className="h-8 w-8 text-black" />,
       category: "productivity",
       badge: "Popular",
-      badgeColor: "bg-blue-800 text-white",
+      badgeColor: "bg-blue-900 text-white",
       href: "/convert-to-old-english",
     },
     {
@@ -32,7 +32,7 @@ export function FeaturedTools() {
       icon: <FileText className="h-8 w-8 text-black" />,
       category: "design",
       badge: "New",
-      badgeColor: "bg-pink-800 text-white ",
+      badgeColor: "bg-pink-900 text-white ",
       href: "/udf-to-pdf",
     },
     {

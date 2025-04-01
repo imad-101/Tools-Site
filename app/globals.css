@@ -128,3 +128,71 @@ html {
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
+
+/* Add some basic prose styling */
+.prose {
+  max-width: 100%;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.625;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose code {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+}
+/* Custom line-clamp for description */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth image transitions */
+img {
+  transition: transform 0.3s ease;
+}
+
+.group:hover img {
+  transform: scale(1.05);
+}
+
+/* Add to your global CSS */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.relative h-48 {
+  height: 12rem;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Image hover transition */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}

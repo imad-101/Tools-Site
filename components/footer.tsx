@@ -21,7 +21,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/convert-to-old-english"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Old English Converter
                 </Link>
@@ -29,7 +29,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/udf-to-pdf"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   UDF to PDF Converter
                 </Link>
@@ -37,7 +37,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/mhtml-to-pdf"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   MHTML to PDF Converter
                 </Link>
@@ -52,7 +52,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   About
                 </Link>
@@ -60,7 +60,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Blog
                 </Link>
@@ -68,7 +68,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Contact
                 </Link>
@@ -83,7 +83,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -91,7 +91,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Terms of Service
                 </Link>
@@ -99,7 +99,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/cookies"
-                  className="text-slate-600 hover:text-gray-600 transition-colors"
+                  className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   Cookie Policy
                 </Link>

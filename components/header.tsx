@@ -90,34 +90,31 @@ export function Header() {
         </div>
         {/* Centered Navigation - Desktop only */}
         <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-700 mx-auto">
-          <Link href="/" className="hover:text-blue-800 transition-colors">
+          <Link href="/" className="hover:text-black transition-colors">
             Home
           </Link>
           <Link
             href="#categories"
-            className="hover:text-blue-800 transition-colors"
+            className="hover:text-black transition-colors"
           >
             Categories
           </Link>
-          <Link href="/tools" className="hover:text-blue-800 transition-colors">
+          <Link href="/tools" className="hover:text-black transition-colors">
             All Tools
           </Link>
-          <Link
-            href="#featured"
-            className="hover:text-blue-800 transition-colors"
-          >
+          <Link href="#featured" className="hover:text-black transition-colors">
             Popular
           </Link>
           <Link
             href="#testimonials"
-            className="hover:text-blue-800 transition-colors"
+            className="hover:text-black transition-colors"
           >
             Testimonials
           </Link>
-          <Link href="#faq" className="hover:text-blue-800 transition-colors">
+          <Link href="#faq" className="hover:text-black transition-colors">
             FAQ
           </Link>
-          <Link href="/blog" className="hover:text-blue-800 transition-colors">
+          <Link href="/blog" className="hover:text-black transition-colors">
             Blog
           </Link>
         </nav>

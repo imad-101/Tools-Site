@@ -60,7 +60,7 @@ export function Testimonials() {
                       src={`/placeholder.svg?text=${testimonial.avatar}`}
                       alt={testimonial.name}
                     />
-                    <AvatarFallback className="bg-blue-800 text-white">
+                    <AvatarFallback className="bg-blue-900 text-white">
                       {testimonial.avatar}
                     </AvatarFallback>
                   </Avatar>
