@@ -59,7 +59,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white sm:px-24">
+    <header className="sticky top-0 z-50 w-full bg-white px-2 sm:px-24">
       <div className="container flex h-16 items-center justify-between">
         {/* Mobile Menu Toggle - Left on mobile */}
         <div className="flex md:hidden">

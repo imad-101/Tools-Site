@@ -192,7 +192,7 @@ export function CategoriesSection() {
   const rightAdditional = additionalCategories.slice(5, 10);
 
   return (
-    <section className="w-full py-12 md:py-24 bg-gray-50" id="categories">
+    <section className="w-full pt-12 pb-6 md:py-20 bg-gray-50" id="categories">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-6">
