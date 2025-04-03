@@ -17,23 +17,43 @@ export default function ConvertToOldEnglishPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-6 md:py-8 bg-white">
+        <section
+          className="w-full py-6 md:py-8 bg-white"
+          itemScope
+          itemType="https://schema.org/SoftwareApplication"
+        >
+          <meta itemProp="applicationCategory" content="Language Tool" />
+          <meta itemProp="operatingSystem" content="Web" />
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold border-transparent bg-emerald-100 text-blue-900">
-                Free Tool
+                Free Online Tool
               </div>
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-slate-900">
-                Convert to Old English
+              <h1
+                className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-slate-900"
+                itemProp="name"
+              >
+                Convert to Old English Online{" "}
+                <span className="hidden sm:block">
+                  - Instant Medieval Text Generator
+                </span>
               </h1>
-              <p className="text-slate-700 md:text-lg max-w-[800px]">
-                Transform modern English text into the rich, historic language
-                of Old English quickly and easily.
+              <p
+                className="text-slate-700 md:text-lg max-w-[800px] hidden sm:block"
+                itemProp="description"
+              >
+                Transform modern English text into authentic Old English/Olde
+                English instantly with our AI-powered converter. Perfect for
+                writers, historians, and language enthusiasts. 100% free, no
+                signup required!
               </p>
+              <meta
+                itemProp="url"
+                content="https://freetoolnow.com/convert-to-old-english"
+              />
             </div>
           </div>
         </section>
-
         {/* Tool Section */}
         <section className="w-full py-8 md:py-12 bg-white">
           <div className="container px-4 md:px-6">
