@@ -38,9 +38,9 @@ const categories: Category[] = [
   // First 10 categories (5 left, 5 right)
   {
     id: 1,
-    name: "Productivity",
+    name: "File Conversion",
     description: "Tools to help you work smarter and accomplish more",
-    href: "/category/productivity",
+    href: "/category/file-conversion",
     icon: <FileText className="h-8 w-8 text-gray-600" />,
   },
   {

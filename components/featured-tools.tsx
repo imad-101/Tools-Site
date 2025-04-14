@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import {
   Card,
@@ -8,57 +9,68 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Code, PenTool, Zap } from "lucide-react";
+import { ArrowRight, FileText, PenTool } from "lucide-react";
 
 export function FeaturedTools() {
   // Sample tools data - in a real app, this would come from an API or database
   const tools = [
     {
       id: 1,
-      title: "Old English Converter",
+      title: "C to Assembly Converter",
       description:
-        "Convert modern English to old English effortlessly with our modern to old English converter.",
-      icon: <FileText className="h-8 w-8 text-black" />,
-      category: "productivity",
-      badge: "Popular",
-      badgeColor: "bg-blue-900 text-white",
-      href: "/convert-to-old-english",
-    },
-    {
-      id: 2,
-      title: "UDF to PDF Converter",
-      description:
-        "Convert UDF files to PDF format quickly and easily. Perfect for sharing and printing.",
-      icon: <FileText className="h-8 w-8 text-black" />,
-      category: "design",
-      badge: "New",
-      badgeColor: "bg-pink-900 text-white ",
-      href: "/udf-to-pdf",
-    },
-    {
-      id: 3,
-      title: "MHTML to PDF Converter",
-      description:
-        "Convert MHTML files to PDF format quickly and easily. Perfect for sharing and printing.",
-      icon: <Code className="h-8 w-8 text-black" />,
+        "Convert C code to assembly language (x86, ARM) with our free online tool.",
+      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
       category: "development",
       badge: null,
       badgeColor: "",
-      href: "/mhtml-to-pdf",
+      href: "/c-to-assembly-converter",
+    },
+    {
+      id: 2,
+      title: "Gram to Bhari Converter",
+      description:
+        "Easily convert grams to bhari with our accurate and user-friendly tool.",
+      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+      category: "measurement",
+      badge: null,
+      badgeColor: "",
+      href: "/gram-to-bhari-converter",
+    },
+    {
+      id: 3,
+      title: "Gram to Ratti Converter",
+      description:
+        "Quickly convert grams to ratti with our precise and easy-to-use converter.",
+      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+      category: "measurement",
+      badge: null,
+      badgeColor: "",
+      href: "/gram-to-ratti-converter",
     },
     {
       id: 4,
-      title: "DocSend to PDF Converter",
+      title: "Tonnes to Bushels Converter",
       description:
-        "Convert DocSend files to PDF format quickly and easily. Perfect for sharing and printing.",
-      icon: <FileText className="h-8 w-8 text-black" />,
-      category: "productivity",
+        "Convert tonnes to bushels effortlessly with our reliable online tool.",
+      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+      category: "measurement",
       badge: null,
       badgeColor: "",
-      href: "/docsend-to-pdf",
+      href: "/tonnes-to-bushels-converter",
     },
     {
       id: 5,
+      title: "ZPL to PDF Converter",
+      description:
+        "Convert ZPL files to PDF format quickly and easily for printing and sharing.",
+      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+      category: "file-conversion",
+      badge: null,
+      badgeColor: "",
+      href: "/zpl-to-pdf-converter",
+    },
+    {
+      id: 6,
       title: "Youtube Music Extractor",
       description:
         "Extract audio from YouTube videos and convert them to MP3 format. Perfect for offline listening.",
@@ -67,16 +79,6 @@ export function FeaturedTools() {
       badge: null,
       badgeColor: "",
       href: "/extract-youtube-music",
-    },
-    {
-      id: 6,
-      title: "Performance Analyzer",
-      description:
-        "Analyze and optimize your website's performance. Get actionable insights to improve speed and user experience.",
-      icon: <Zap className="h-8 w-8 text-black" />,
-      category: "development",
-      badge: "Featured",
-      badgeColor: " text-black border-black",
     },
   ];
 
