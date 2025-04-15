@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
 function UserIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -81,8 +80,8 @@ export default function BlogPage() {
                 Articles and Helpful Guides
               </h1>
               <p className="mt-4 text-xl text-gray-600">
-                Discover articles and helpful guides about various tools, their
-                uses, and tips to boost your productivity.
+                Discover articles and helpful guides about JSON tools and JSON
+                Files in general
               </p>
             </div>
           </div>

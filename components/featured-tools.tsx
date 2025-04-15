@@ -58,27 +58,28 @@ export function FeaturedTools() {
       badgeColor: "",
       href: "/tonnes-to-bushels-converter",
     },
-    {
-      id: 5,
-      title: "ZPL to PDF Converter",
-      description:
-        "Convert ZPL files to PDF format quickly and easily for printing and sharing.",
-      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
-      category: "file-conversion",
-      badge: null,
-      badgeColor: "",
-      href: "/zpl-to-pdf-converter",
-    },
+
     {
       id: 6,
-      title: "Youtube Music Extractor",
+      title: "Java to C Converter",
       description:
-        "Extract audio from YouTube videos and convert them to MP3 format. Perfect for offline listening.",
+        "Easily convert any code written in Java language to C withing one click .",
       icon: <PenTool className="h-8 w-8 text-black" />,
-      category: "design",
+      category: "development",
       badge: null,
       badgeColor: "",
-      href: "/extract-youtube-music",
+      href: "/java-to-c-converter",
+    },
+    {
+      id: 7,
+      title: "UDF to PDF Converter",
+      description:
+        "Open and view your UDF files (.udf) and easily convert them into PDF with a single click and download instantly",
+      icon: <PenTool className="h-8 w-8 text-black" />,
+      category: "file-conversion",
+      badge: "Popular",
+      badgeColor: "blue",
+      href: "/udf-to-pdf",
     },
   ];
 

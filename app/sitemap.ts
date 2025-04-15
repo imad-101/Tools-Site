@@ -1,5 +1,14 @@
+import { getSortedPostsData } from "@/lib/posts";
+
 export default async function sitemap() {
+  const posts = getSortedPostsData();
+  const postUrls = posts.map((post) => ({
+    url: `https://merge-json-files.com/blog/${post.id}`,
+    lastModified: new Date(post.date),
+  }));
+
   return [
+    ...postUrls,
     {
       url: "https://freetoolnow.com/",
       lastModified: new Date(),
