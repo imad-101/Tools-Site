@@ -99,8 +99,10 @@ export default function HomePage() {
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred"
+      );
     } finally {
       setLoading(false);
     }

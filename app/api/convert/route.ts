@@ -4,7 +4,7 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 // Helper to split a long text into lines that fit within a given width.
 function splitTextIntoLines(
   text: string,
-  font: any,
+  font: import("pdf-lib").PDFFont,
   fontSize: number,
   maxWidth: number
 ): string[] {
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     let content: string;
     try {
       content = buffer.toString("utf8");
-    } catch (err) {
+    } catch {
       content = "Unable to convert file content to text.";
     }
 
