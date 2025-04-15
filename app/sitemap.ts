@@ -24,5 +24,9 @@ export default async function sitemap() {
       url: "https://freetoolnow.com/tonnes-to-bushels-converter",
       lastModified: new Date(),
     },
+    {
+      url: "https://freetoolnow.com/udf-to-pdf",
+      lastModified: new Date(),
+    },
   ];
 }

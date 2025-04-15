@@ -1,146 +1,236 @@
 "use client";
 
-import { useState } from "react";
-import { PDFDocument, StandardFonts } from "pdf-lib";
-// import { saveAs } from "file-saver";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import React, { useState } from "react";
 
-export default function UdfToPdfConverter() {
-  // const [file, setFile] = useState<File | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
+type FileMetadata = {
+  name: string;
+  size: number;
+  type: string;
+  lastModified: string; // Formatted date string
+};
 
-  const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const uploadedFile = event.target.files?.[0];
-    if (!uploadedFile) return;
+export default function HomePage() {
+  const [file, setFile] = useState<File | null>(null);
+  const [metadata, setMetadata] = useState<FileMetadata | null>(null);
+  const [fileContentPreview, setFileContentPreview] = useState<string>("");
+  const [downloadUrl, setDownloadUrl] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-    if (uploadedFile.name.split(".").pop()?.toLowerCase() !== "udf") {
-      alert("Please upload a .udf file");
+  // Process file from input or drop
+  const handleNewFile = (selected: File) => {
+    if (!selected.name.toLowerCase().endsWith(".udf")) {
+      setError("Please select a .udf file.");
+      resetAll();
       return;
     }
+    setError("");
+    setFile(selected);
+    setDownloadUrl("");
 
-    // setFile(uploadedFile);
-    setIsLoading(true);
+    // Build file metadata info
+    const meta: FileMetadata = {
+      name: selected.name,
+      size: selected.size,
+      type: selected.type || "unknown",
+      lastModified: new Date(selected.lastModified).toLocaleString(),
+    };
+    setMetadata(meta);
 
-    try {
-      const fileContent = await readFileContent(uploadedFile);
-      const pdfBytes = await generatePdf(fileContent);
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
-      setPdfBlob(blob);
-    } catch (error) {
-      alert("Error converting file: " + (error as Error).message);
-    } finally {
-      setIsLoading(false);
+    // For preview, read the first 1KB (adjust as needed)
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setFileContentPreview(result.slice(0, 1024));
+    };
+    reader.readAsText(selected);
+  };
+
+  // Reset all state values to initial
+  const resetAll = () => {
+    setFile(null);
+    setMetadata(null);
+    setFileContentPreview("");
+    setDownloadUrl("");
+    setError("");
+    setLoading(false);
+  };
+
+  // File input change
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      handleNewFile(e.target.files[0]);
     }
   };
 
-  const readFileContent = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target?.result as string);
-      reader.onerror = (e) => reject(e.target?.error);
-      reader.readAsText(file);
-    });
+  // Drag & drop handlers with premium look
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleNewFile(e.dataTransfer.files[0]);
+      e.dataTransfer.clearData();
+    }
   };
 
-  const generatePdf = async (content: string) => {
-    const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-
-    const { width, height } = page.getSize();
-    const fontSize = 12;
-    const margin = 50;
-
-    page.drawText(content, {
-      x: margin,
-      y: height - margin - fontSize,
-      font,
-      size: fontSize,
-      maxWidth: width - margin * 2,
-      lineHeight: fontSize * 1.2,
-    });
-
-    return await pdfDoc.save();
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
   };
 
-  const handleDownload = () => {
-    if (pdfBlob) {
-      // saveAs(pdfBlob, `converted-${file?.name.replace(".udf", "")}.pdf`);
+  // Call server API to convert file
+  const handleConvert = async () => {
+    if (!file) {
+      setError("Please select a UDF file first.");
+      return;
+    }
+    setLoading(true);
+    setError("");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/convert", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Conversion failed. Please try again.");
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-gray-900">
-              UDF to PDF Converter
-            </CardTitle>
-            <CardDescription className="text-gray-600">
-              Convert your UDF files to PDF instantly
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="udf-file" className="text-gray-700 mb-2">
-                  Upload UDF File
-                </Label>
-                <Input
-                  id="udf-file"
-                  type="file"
-                  accept=".udf"
-                  onChange={handleFileUpload}
-                  disabled={isLoading}
-                  className="cursor-pointer border-2 border-dashed border-gray-300 p-6 rounded-lg"
-                />
-              </div>
+    <div className="min-h-screen bg-gradient-to-r from-gray-100 to-blue-50 flex flex-col items-center p-4">
+      <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-800">
+        UDF to PDF Converter
+      </h1>
+      <p className="mb-8 text-lg text-gray-700 text-center max-w-2xl">
+        Enjoy a premium, fast, and secure way to convert your UDF files to PDF.
+      </p>
 
-              {isLoading && (
-                <div className="text-center text-gray-600">Converting...</div>
-              )}
+      {/* Premium File Upload Area */}
+      <div
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        className="w-full max-w-lg border-4 border-dashed border-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-1 rounded-xl shadow-lg"
+      >
+        <div className="bg-white rounded-lg p-8 cursor-pointer hover:bg-gray-50 transition duration-200 flex flex-col items-center">
+          {file ? (
+            <p className="text-2xl font-semibold text-gray-800">{file.name}</p>
+          ) : (
+            <p className="text-xl text-gray-500">
+              Drag & drop your <span className="font-bold">.udf</span> file here
+              or click to select
+            </p>
+          )}
+          <input
+            type="file"
+            accept=".udf"
+            onChange={handleFileChange}
+            className="mt-4 block w-full text-center text-gray-600 file:py-3 file:px-6 file:rounded-full file:border-0 file:text-base file:font-semibold file:bg-gradient-to-r file:from-purple-200 file:via-pink-300 file:to-red-200 hover:file:from-purple-300 hover:file:via-pink-400 hover:file:to-red-300"
+          />
+        </div>
+      </div>
 
-              {pdfBlob && (
-                <div className="text-center">
-                  <Button
-                    onClick={handleDownload}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
-                  >
-                    Download PDF
-                  </Button>
-                  <p className="mt-2 text-sm text-gray-500">
-                    Ready to download your converted PDF
-                  </p>
-                </div>
-              )}
-
-              <div className="text-sm text-gray-500 space-y-2">
-                <p>How to use:</p>
-                <ol className="list-decimal list-inside space-y-1">
-                  <li>
-                    Click &quot;Upload UDF File&quot; to select your document
-                  </li>
-                  <li>Wait for the conversion to complete</li>
-                  <li>Download your PDF file</li>
-                </ol>
+      {/* File Metadata and Preview Card */}
+      {metadata && (
+        <div className="w-full max-w-lg bg-white mt-6 rounded-xl shadow-xl p-6">
+          <h2 className="text-2xl font-semibold text-purple-700 mb-4">
+            File Details
+          </h2>
+          <div className="grid grid-cols-2 gap-4 text-gray-700 text-sm">
+            <div>
+              <span className="font-medium">Name:</span>
+              <p>{metadata.name}</p>
+            </div>
+            <div>
+              <span className="font-medium">Size:</span>
+              <p>{metadata.size.toLocaleString()} bytes</p>
+            </div>
+            <div>
+              <span className="font-medium">Type:</span>
+              <p>{metadata.type}</p>
+            </div>
+            <div>
+              <span className="font-medium">Last Modified:</span>
+              <p>{metadata.lastModified}</p>
+            </div>
+          </div>
+          {fileContentPreview && (
+            <div className="mt-4">
+              <h3 className="text-lg font-medium text-purple-600 mb-2">
+                Preview:
+              </h3>
+              <div className="border rounded-lg p-3 bg-gray-50 max-h-48 overflow-auto text-xs whitespace-pre-wrap">
+                {fileContentPreview}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          )}
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
+        <button
+          onClick={handleConvert}
+          disabled={!file || loading}
+          className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-xl hover:bg-purple-700 transition duration-200 disabled:opacity-50"
+        >
+          {loading ? (
+            <div className="flex items-center">
+              <svg
+                className="animate-spin h-5 w-5 mr-2 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v8H4z"
+                ></path>
+              </svg>
+              Converting...
+            </div>
+          ) : (
+            "Convert to PDF"
+          )}
+        </button>
+
+        {downloadUrl && (
+          <a
+            href={downloadUrl}
+            download="converted.pdf"
+            className="px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow-xl hover:bg-green-700 transition duration-200"
+          >
+            Download PDF
+          </a>
+        )}
+
+        <button
+          onClick={resetAll}
+          className="px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-xl hover:bg-red-700 transition duration-200"
+        >
+          Reset
+        </button>
       </div>
+
+      {error && <p className="mt-6 text-red-600 text-center">{error}</p>}
     </div>
   );
 }
