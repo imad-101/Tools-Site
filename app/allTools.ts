@@ -100,6 +100,17 @@ const allTools = [
     badgeColor: "",
     href: "/zpl-to-pdf-converter",
   },
+  {
+    id: 10,
+    title: "Line Breaks Remover",
+    description:
+      "Remove unwanted line breaks from your text quickly and efficiently. Perfect for cleaning up copied text.",
+    icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
+    category: "text-tools",
+    badge: null,
+    badgeColor: "",
+    href: "/remove-line-breaks-online",
+  },
 ];
 
 export default allTools;
