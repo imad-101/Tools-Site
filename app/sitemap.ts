@@ -1,14 +1,14 @@
-import { getSortedPostsData } from "@/lib/posts";
+// import { getSortedPostsData } from "@/lib/posts";
 
 export default async function sitemap() {
-  const posts = getSortedPostsData();
-  const postUrls = posts.map((post) => ({
-    url: `https://freetoolnow/blog/${post.id}`,
-    lastModified: new Date(post.date),
-  }));
+  // const posts = getSortedPostsData();
+  // const postUrls = posts.map((post) => ({
+  //   url: `https://freetoolnow/blog/${post.id}`,
+  //   lastModified: new Date(post.date),
+  // }));
 
   return [
-    ...postUrls,
+    // ...postUrls,
     {
       url: "https://freetoolnow.com/",
       lastModified: new Date(),

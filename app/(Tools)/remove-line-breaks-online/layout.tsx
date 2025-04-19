@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Free Line Breaks Remover - Clean Text Online",
     description:
       "Remove line breaks from text instantly with our free online tool. Ideal for coding, data processing, and content editing.",
-    url: "https://freetoolnow.com/remove-line-break-online",
+    url: "https://freetoolnow.com/remove-line-breaks-online",
     images: [
       {
         url: "https://freetoolnow.com/remove-line-break.png",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ["https://freetoolnow.com/twitter/remove-line-break.png"],
   },
   alternates: {
-    canonical: "https://freetoolnow.com/remove-line-break-online",
+    canonical: "https://freetoolnow.com/remove-line-breaks-online",
   },
   robots: {
     index: true,
@@ -94,7 +94,7 @@ export default function RemoveLineBreakLayout({
           ],
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://freetoolnow.com/remove-line-break-online",
+            "@id": "https://freetoolnow.com/remove-line-breaks-online",
           },
         })}
       </script>
