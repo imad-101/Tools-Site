@@ -37,5 +37,9 @@ export default async function sitemap() {
       url: "https://freetoolnow.com/udf-to-pdf",
       lastModified: new Date(),
     },
+    {
+      url: "https://freetoolnow.com/remove-line-breaks-online",
+      lastModified: new Date(),
+    },
   ];
 }
