@@ -109,21 +109,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-100 to-blue-50 flex flex-col items-center p-4">
-      <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-800">
-        UDF to PDF Converter
-      </h1>
-      <p className="mb-8 text-lg text-gray-700 text-center max-w-2xl">
-        Enjoy a premium, fast, and secure way to convert your UDF files to PDF.
-      </p>
-
+    <div className="  flex flex-col items-center p-4">
       {/* Premium File Upload Area */}
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        className="w-full max-w-lg border-4 border-dashed border-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-1 rounded-xl shadow-lg"
+        className="w-full max-w-5xl border-4 border-dashed border-transparent bg-gray-800 p-1 rounded-xl shadow-lg"
       >
-        <div className="bg-white rounded-lg p-8 cursor-pointer hover:bg-gray-50 transition duration-200 flex flex-col items-center">
+        <div className="bg-white rounded-lg p-8 py-16 cursor-pointer hover:bg-gray-50 transition duration-200 flex flex-col  justify-center items-center">
           {file ? (
             <p className="text-2xl font-semibold text-gray-800">{file.name}</p>
           ) : (
@@ -132,19 +125,21 @@ export default function HomePage() {
               or click to select
             </p>
           )}
-          <input
-            type="file"
-            accept=".udf"
-            onChange={handleFileChange}
-            className="mt-4 block w-full text-center text-gray-600 file:py-3 file:px-6 file:rounded-full file:border-0 file:text-base file:font-semibold file:bg-gradient-to-r file:from-purple-200 file:via-pink-300 file:to-red-200 hover:file:from-purple-300 hover:file:via-pink-400 hover:file:to-red-300"
-          />
+          <div>
+            <input
+              type="file"
+              accept=".udf"
+              onChange={handleFileChange}
+              className="mt-4 block w-full text-center text-gray-600  file:py-3 file:px-6 file:cursor-pointer file:rounded-full file:border-0 file:text-base file:font-semibold file:bg-blue-200"
+            />
+          </div>
         </div>
       </div>
 
       {/* File Metadata and Preview Card */}
       {metadata && (
-        <div className="w-full max-w-lg bg-white mt-6 rounded-xl shadow-xl p-6">
-          <h2 className="text-2xl font-semibold text-purple-700 mb-4">
+        <div className="w-full max-w-4xl bg-white mt-6 rounded-xl shadow-xl p-6">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             File Details
           </h2>
           <div className="grid grid-cols-2 gap-4 text-gray-700 text-sm">
@@ -167,7 +162,7 @@ export default function HomePage() {
           </div>
           {fileContentPreview && (
             <div className="mt-4">
-              <h3 className="text-lg font-medium text-purple-600 mb-2">
+              <h3 className="text-lg font-medium text-gray-800 mb-2">
                 Preview:
               </h3>
               <div className="border rounded-lg p-3 bg-gray-50 max-h-48 overflow-auto text-xs whitespace-pre-wrap">
@@ -183,7 +178,7 @@ export default function HomePage() {
         <button
           onClick={handleConvert}
           disabled={!file || loading}
-          className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-xl hover:bg-purple-700 transition duration-200 disabled:opacity-50"
+          className="px-8 py-3 bg-gray-600 text-white font-semibold rounded-full shadow-xl hover:bg-gray-700 cursor-pointer transition duration-200 disabled:opacity-50"
         >
           {loading ? (
             <div className="flex items-center">
@@ -218,7 +213,7 @@ export default function HomePage() {
           <a
             href={downloadUrl}
             download="converted.pdf"
-            className="px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow-xl hover:bg-green-700 transition duration-200"
+            className="px-8 py-3 bg-green-500 text-white font-semibold rounded-full shadow-xl hover:bg-green-600 transition duration-200"
           >
             Download PDF
           </a>
@@ -226,7 +221,7 @@ export default function HomePage() {
 
         <button
           onClick={resetAll}
-          className="px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-xl hover:bg-red-700 transition duration-200"
+          className="px-8 py-3 bg-red-400 text-white font-semibold rounded-full shadow-xl hover:bg-red-500 cursor-pointer transition duration-200"
         >
           Reset
         </button>

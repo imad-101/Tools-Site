@@ -10,14 +10,14 @@ import {
 
 export default function UdfToPdfPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
+    <div className="flex min-h-screen flex-col ">
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-16 bg-gradient-to-b from-purple-50 to-slate-50">
+        <section className="w-full pt-12 md:pt-16 ">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4">
-              <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-transparent bg-purple-100 text-purple-900">
+              <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-transparent bg-blue-900 text-white">
                 Free Tool
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-slate-900">
@@ -32,7 +32,7 @@ export default function UdfToPdfPage() {
         </section>
 
         {/* Tool Section */}
-        <section className="w-full py-8 md:py-12 bg-slate-50">
+        <section className="w-full py-8 md:py-12 ">
           <div className="container px-4 md:px-6">
             <UdfToPdfConverter />
           </div>
@@ -54,7 +54,7 @@ export default function UdfToPdfPage() {
             </div>
             <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
               <div className="flex flex-col items-center text-center space-y-3">
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xl">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xl">
                   1
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900">
@@ -66,7 +66,7 @@ export default function UdfToPdfPage() {
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xl">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xl">
                   2
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900">
@@ -78,7 +78,7 @@ export default function UdfToPdfPage() {
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-3">
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xl">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xl">
                   3
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900">
@@ -138,7 +138,7 @@ export default function UdfToPdfPage() {
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     What is a UDF file?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">
@@ -149,7 +149,7 @@ export default function UdfToPdfPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     Why convert UDF to PDF?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">
@@ -160,7 +160,7 @@ export default function UdfToPdfPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     Is my data secure during conversion?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">
@@ -170,7 +170,7 @@ export default function UdfToPdfPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-4" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     What is the maximum file size for conversion?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">
@@ -180,7 +180,7 @@ export default function UdfToPdfPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-5" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     Will the PDF maintain the original formatting?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">
@@ -190,7 +190,7 @@ export default function UdfToPdfPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-6" className="border-slate-200">
-                  <AccordionTrigger className="text-slate-900 hover:text-purple-600">
+                  <AccordionTrigger className="text-slate-900 hover:text-blue-800">
                     Can I convert multiple UDF files at once?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600">

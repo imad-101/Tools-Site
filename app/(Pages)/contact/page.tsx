@@ -152,7 +152,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium">Phone</h3>
-                          <p className="text-gray-600">+1 (555) 123-4567</p>
+                          <p className="text-gray-600">+92 301 8969 409</p>
                         </div>
                       </div>
                     </div>
@@ -178,9 +178,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium">Email</h3>
-                          <p className="text-gray-600">
-                            support@freetoolnow.com
-                          </p>
+                          <p className="text-gray-600">freetoolnow@gmail.com</p>
                         </div>
                       </div>
                     </div>
@@ -207,7 +205,7 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-medium">Location</h3>
                           <p className="text-gray-600">
-                            123 Tool Street, San Francisco, CA 94107
+                            Danin - Chitral Pakistan
                           </p>
                         </div>
                       </div>
