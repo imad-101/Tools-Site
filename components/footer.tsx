@@ -20,26 +20,10 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/convert-to-old-english"
-                  className="text-slate-600 hover:text-gray-900 transition-colors"
-                >
-                  Old English Converter
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/udf-to-pdf"
                   className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   UDF to PDF Converter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mhtml-to-pdf"
-                  className="text-slate-600 hover:text-gray-900 transition-colors"
-                >
-                  MHTML to PDF Converter
                 </Link>
               </li>
             </ul>

@@ -9,67 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, PenTool } from "lucide-react";
+import { ArrowRight, PenTool } from "lucide-react";
 
 export function FeaturedTools() {
   // Sample tools data - in a real app, this would come from an API or database
   const tools = [
-    {
-      id: 1,
-      title: "C to Assembly Converter",
-      description:
-        "Convert C code to assembly language (x86, ARM) with our free online tool.",
-      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
-      category: "development",
-      badge: null,
-      badgeColor: "",
-      href: "/c-to-assembly-converter",
-    },
-    {
-      id: 2,
-      title: "Gram to Bhari Converter",
-      description:
-        "Easily convert grams to bhari with our accurate and user-friendly tool.",
-      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
-      category: "measurement",
-      badge: null,
-      badgeColor: "",
-      href: "/gram-to-bhari-converter",
-    },
-    {
-      id: 3,
-      title: "Gram to Ratti Converter",
-      description:
-        "Quickly convert grams to ratti with our precise and easy-to-use converter.",
-      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
-      category: "measurement",
-      badge: null,
-      badgeColor: "",
-      href: "/gram-to-ratti-converter",
-    },
-    {
-      id: 4,
-      title: "Tonnes to Bushels Converter",
-      description:
-        "Convert tonnes to bushels effortlessly with our reliable online tool.",
-      icon: React.createElement(FileText, { className: "h-8 w-8 text-black" }),
-      category: "measurement",
-      badge: null,
-      badgeColor: "",
-      href: "/tonnes-to-bushels-converter",
-    },
-
-    {
-      id: 6,
-      title: "Java to C Converter",
-      description:
-        "Easily convert any code written in Java language to C withing one click .",
-      icon: <PenTool className="h-8 w-8 text-black" />,
-      category: "development",
-      badge: null,
-      badgeColor: "",
-      href: "/java-to-c-converter",
-    },
     {
       id: 7,
       title: "UDF to PDF Converter",
