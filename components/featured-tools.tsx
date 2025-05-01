@@ -23,7 +23,7 @@ export function FeaturedTools() {
       category: "file-conversion",
       badge: "Popular",
       badgeColor: "blue",
-      href: "/udf-to-pdf",
+      href: "/convert-udf-to-pdf",
     },
   ];
 

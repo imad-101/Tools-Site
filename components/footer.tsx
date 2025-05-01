@@ -20,7 +20,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/udf-to-pdf"
+                  href="/convert-udf-to-pdf"
                   className="text-slate-600 hover:text-gray-900 transition-colors"
                 >
                   UDF to PDF Converter
