@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     title: "Free UDF to PDF Converter - Online File Conversion",
     description:
       "Easily convert UDF files to PDF with our free, secure, and browser-based tool. Perfect for optical media, disc images, and document conversion.",
-    url: "https://freetoolnow.com/udf-to-pdf",
+    url: "https://freetoolnow.com/convert-udf-to-pdf",
     type: "website",
     images: [
       {
-        url: "https://freetoolnow.com/udf-to-pdf.png",
+        url: "https://freetoolnow.com/convert-udf-to-pdf.png",
         width: 1200,
         height: 630,
         alt: "UDF to PDF Converter Tool Interface",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     images: ["https://freetoolnow.com/twitter/udf-to-pdf.png"],
   },
   alternates: {
-    canonical: "https://freetoolnow.com/udf-to-pdf",
+    canonical: "https://freetoolnow.com/convert-udf-to-pdf",
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export default function UdfToPdfLayout({
     name: "Convert UDF to PDF",
     description:
       "Step-by-step guide to convert Universal Disk Format (UDF) files to PDF using a free online tool",
-    image: "https://freetoolnow.com/udf-to-pdf.png",
+    image: "https://freetoolnow.com/convert-udf-to-pdf.png",
     totalTime: "PT2M",
     tool: { "@type": "HowToTool", name: "UDF to PDF Converter" },
     step: [
@@ -81,7 +81,7 @@ export default function UdfToPdfLayout({
     ],
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://freetoolnow.com/udf-to-pdf",
+      "@id": "https://freetoolnow.com/convert-udf-to-pdf",
     },
   };
 
@@ -99,7 +99,7 @@ export default function UdfToPdfLayout({
         "@type": "ListItem",
         position: 2,
         name: "UDF to PDF",
-        item: "https://freetoolnow.com/udf-to-pdf",
+        item: "https://freetoolnow.com/convert-udf-to-pdf",
       },
     ],
   };
@@ -110,7 +110,10 @@ export default function UdfToPdfLayout({
         {/* Ensures correct mobile scaling */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Canonical tag redundancy */}
-        <link rel="canonical" href="https://freetoolnow.com/udf-to-pdf" />
+        <link
+          rel="canonical"
+          href="https://freetoolnow.com/convert-udf-to-pdf"
+        />
       </Head>
 
       {/* Structured Data: HowTo for rich snippets */}
