@@ -15,7 +15,7 @@ export default async function sitemap() {
     },
 
     {
-      url: "https://freetoolnow.com/udf-to-pdf",
+      url: "https://freetoolnow.com/convert-udf-to-pdf",
       lastModified: new Date(),
     },
   ];
