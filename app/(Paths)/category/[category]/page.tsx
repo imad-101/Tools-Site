@@ -1,8 +1,6 @@
-// app/category/[category]/page.tsx
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
@@ -10,15 +8,35 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import allTools from "@/app/allTools";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export default async function CategoryPage({
+export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ category: string }>;
-}) {
-  const resolvedParams = await params;
-  const normalizedCategory = resolvedParams.category.toLowerCase();
+  params: { category: string };
+}): Promise<Metadata> {
+  const normalizedCategory = params.category.toLowerCase();
+  const categoryName =
+    normalizedCategory.charAt(0).toUpperCase() + normalizedCategory.slice(1);
 
+  return {
+    title: `${categoryName} Tools`,
+    description: `Explore ${categoryName} tools and utilities`,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/category/${normalizedCategory}`,
+    },
+    openGraph: {
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/category/${normalizedCategory}`,
+    },
+  };
+}
+
+export default function CategoryPage({
+  params,
+}: {
+  params: { category: string };
+}) {
+  const normalizedCategory = params.category.toLowerCase();
   const filteredTools = allTools.filter(
     (tool) => tool.category.toLowerCase() === normalizedCategory
   );
@@ -27,30 +45,25 @@ export default async function CategoryPage({
     normalizedCategory.charAt(0).toUpperCase() + normalizedCategory.slice(1);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <>
       <Header />
-
       <main className="flex-1 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumb className="mb-6">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" asChild>
-                  <Link className="text-gray-500 hover:text-gray-700" href="/">
-                    Home
-                  </Link>
-                </BreadcrumbLink>
+                <Link className="text-gray-500 hover:text-gray-700" href="/">
+                  Home
+                </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href="/categories" asChild>
-                  <Link
-                    className="text-gray-500 hover:text-gray-700"
-                    href="/#categories"
-                  >
-                    Categories
-                  </Link>
-                </BreadcrumbLink>
+                <Link
+                  className="text-gray-500 hover:text-gray-700"
+                  href="/#categories"
+                >
+                  Categories
+                </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -108,8 +121,7 @@ export default async function CategoryPage({
           )}
         </div>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
 }

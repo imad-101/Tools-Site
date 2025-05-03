@@ -25,6 +25,17 @@ export function FeaturedTools() {
       badgeColor: "blue",
       href: "/convert-udf-to-pdf",
     },
+    {
+      id: 6,
+      title: "ZPL to PDF Converter",
+      description:
+        "Open and view your ZPL files (.zpl) and easily convert them into PDF with a single click and download instantly",
+      icon: <PenTool className="h-8 w-8 text-black" />,
+      category: "file-conversion",
+      badge: "Popular",
+      badgeColor: "blue",
+      href: "/convert-zpl-to-pdf",
+    },
   ];
 
   return (
