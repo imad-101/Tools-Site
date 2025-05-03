@@ -112,7 +112,7 @@ export default function CategoryPage({
                       href={tool.href}
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                     >
-                      Use Tool →
+                      Use Tool Now →
                     </Link>
                   </div>
                 </div>
