@@ -15,7 +15,10 @@ export async function generateMetadata({
 }: {
   params: { category: string };
 }): Promise<Metadata> {
-  const normalizedCategory = params.category.toLowerCase();
+  // In Next.js App Router, we need to await the entire params object
+  const params_resolved = await Promise.resolve(params);
+  const category = params_resolved.category;
+  const normalizedCategory = category.toLowerCase();
   const categoryName =
     normalizedCategory.charAt(0).toUpperCase() + normalizedCategory.slice(1);
 
@@ -31,12 +34,15 @@ export async function generateMetadata({
   };
 }
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params,
 }: {
   params: { category: string };
 }) {
-  const normalizedCategory = params.category.toLowerCase();
+  // In Next.js App Router, we need to await the entire params object
+  const params_resolved = await Promise.resolve(params);
+  const category = params_resolved.category;
+  const normalizedCategory = category.toLowerCase();
   const filteredTools = allTools.filter(
     (tool) => tool.category.toLowerCase() === normalizedCategory
   );

@@ -18,5 +18,9 @@ export default async function sitemap() {
       url: "https://freetoolnow.com/convert-udf-to-pdf",
       lastModified: new Date(),
     },
+    {
+      url: "https://freetoolnow.com/convert-zpl-to-pdf",
+      lastModified: new Date(),
+    },
   ];
 }
