@@ -10,14 +10,17 @@ import allTools from "@/app/allTools";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+// Since params must be a Promise in your setup
+interface CategoryPageParams {
+  params: Promise<{ category: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
 export async function generateMetadata({
   params,
-}: {
-  params: { category: string };
-}): Promise<Metadata> {
-  // In Next.js App Router, we need to await the entire params object
-  const params_resolved = await Promise.resolve(params);
-  const category = params_resolved.category;
+}: CategoryPageParams): Promise<Metadata> {
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
   const normalizedCategory = category.toLowerCase();
   const categoryName =
     normalizedCategory.charAt(0).toUpperCase() + normalizedCategory.slice(1);
@@ -34,15 +37,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { category: string };
-}) {
-  // In Next.js App Router, we need to await the entire params object
-  const params_resolved = await Promise.resolve(params);
-  const category = params_resolved.category;
+// This now matches your project's expected types
+export default async function CategoryPage({ params }: CategoryPageParams) {
+  // Handle the Promise-based parameters
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
   const normalizedCategory = category.toLowerCase();
+
+  // Your original code continues from here
   const filteredTools = allTools.filter(
     (tool) => tool.category.toLowerCase() === normalizedCategory
   );
