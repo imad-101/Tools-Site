@@ -13,12 +13,19 @@ export default async function sitemap() {
   const baseUrl = "https://freetoolnow.com";
 
   // Generate URLs for all tools with category-based priorities
-  const toolUrls = allTools.map((tool) => ({
-    url: `${baseUrl}${tool.href}`,
-    lastModified: new Date(),
-    changefreq: "weekly",
-    priority: tool.category === "Popular" ? 0.9 : 0.8,
-  }));
+  // Filter out tools that don't have enough content
+  const toolUrls = allTools
+    .filter((tool) => {
+      // Add your content validation logic here
+      // For example, check if the tool has a minimum description length
+      return tool.description && tool.description.length > 100;
+    })
+    .map((tool) => ({
+      url: `${baseUrl}${tool.href}`,
+      lastModified: new Date(),
+      changefreq: "weekly",
+      priority: tool.category === "Popular" ? 0.9 : 0.8,
+    }));
 
   // Static pages with higher priority
   const staticPages = [

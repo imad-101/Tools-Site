@@ -9,7 +9,7 @@ import Testimonials from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
 import { Newsletter } from "@/components/newsletter";
 import { SearchTools } from "@/components/SearchTools";
-import { CategoriesSection } from "@/components/Categories";
+// import { CategoriesSection } from "@/components/Categories";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Home() {
@@ -43,7 +43,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* Features Section */}
         <section className="w-full pt-12  md:py-20 bg-gray-50 ">
           <div className="container px-4 md:px-6">
@@ -97,7 +96,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* Tools Section */}
         <section className="w-full py-6 md:py-20 bg-white" id="featured">
           <div className="container px-4 md:px-6">
@@ -122,16 +120,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Categories Section */}
-
-        <CategoriesSection />
+        {/* Categories Section
+        <CategoriesSection /> */}
         {/* Testimonials Section */}
         <Testimonials />
-
         {/* FAQ Section */}
         <FAQ />
-
         {/* Newsletter Section */}
         <Newsletter />
       </main>

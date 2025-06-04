@@ -7,6 +7,24 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "UDF to PDF Converter - Free Online Tool",
+  description:
+    "Convert Universal Disk Format (UDF) files to PDF documents quickly and easily. No installation required. Free online tool with secure browser-based conversion.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function UdfToPdfPage() {
   return (
@@ -268,10 +286,10 @@ export default function UdfToPdfPage() {
                   Introduction
                 </h3>
                 <p className="text-slate-700 mb-4">
-                  In today’s digital landscape, managing your media files
+                  In today's digital landscape, managing your media files
                   efficiently is essential. UDF files are widely used to store
                   data on DVDs, Blu-ray discs, and other optical media. However,
-                  their native format isn’t ideal for sharing or long-term
+                  their native format isn't ideal for sharing or long-term
                   archiving. Converting UDF to PDF offers a reliable way to
                   preserve content, making it accessible on any device.
                 </p>
@@ -279,8 +297,8 @@ export default function UdfToPdfPage() {
                   This guide is designed to help you understand the benefits of
                   converting UDF files, learn how our online tool works, and
                   discover best practices and troubleshooting tips. Whether
-                  you’re using our <strong>udf to pdf converter</strong> for
-                  personal, educational, or professional purposes, you’ll find
+                  you're using our <strong>udf to pdf converter</strong> for
+                  personal, educational, or professional purposes, you'll find
                   actionable insights to optimize your workflow.
                 </p>
               </section>
