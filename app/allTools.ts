@@ -10,7 +10,7 @@ const allTools = [
     category: "file-conversion",
     badge: "New",
     badgeColor: "bg-green-100 text-green-800 border-green-200",
-    href: "/udf-to-pdf",
+    href: "/convert-udf-to-pdf",
   },
   {
     id: 6,

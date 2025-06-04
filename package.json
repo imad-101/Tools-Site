@@ -43,7 +43,7 @@
     "emailjs-mime-parser": "^2.0.4",
     "file-saver": "^2.0.5",
     "formidable": "^3.5.2",
-    "framer-motion": "^12.7.3",
+    "framer-motion": "^12.14.0",
     "gray-matter": "^4.0.3",
     "html2pdf": "^0.0.11",
     "html2pdf.js": "^0.10.3",

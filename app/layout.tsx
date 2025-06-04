@@ -39,6 +39,7 @@ export const metadata: Metadata = {
       },
     ],
     siteName: "Free Tool Now",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
@@ -46,6 +47,7 @@ export const metadata: Metadata = {
     description:
       "Your ultimate free online toolkit for all daily needs - text, code, files, and productivity tools",
     images: ["https://freetoolnow.com/main.png"],
+    creator: "@freetoolnow",
   },
   alternates: {
     canonical: "https://freetoolnow.com",
@@ -58,15 +60,17 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  // verification: {
-  //   google: "your-google-verification-code",
-  //   yandex: "yandex-verification-code",
-  //   other: {
-  //     "msvalidate.01": "bing-verification-code",
-  //   },
-  // },
+  verification: {
+    google: "your-google-verification-code",
+    yandex: "9fbdf3ee4ae21ee9",
+  },
+  category: "technology",
+  classification: "Web Tools",
 };
 
 export default function RootLayout({
@@ -102,10 +106,22 @@ export default function RootLayout({
                 url: "https://freetoolnow.com/main.png",
               },
             },
+            sameAs: [
+              "https://twitter.com/freetoolnow",
+              "https://github.com/freetoolnow",
+            ],
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+            },
           })}
         </script>
       </head>
-      <body className={`${inter.className}`}>
+      <body
+        className={`${inter.className} min-h-screen bg-background antialiased`}
+      >
         {children}
         <Toaster />
         <Analytics />

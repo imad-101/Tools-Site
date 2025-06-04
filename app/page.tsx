@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FeaturedTools } from "@/components/featured-tools";
-import { Testimonials } from "@/components/testemonials";
+import Testimonials from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
 import { Newsletter } from "@/components/newsletter";
 import { SearchTools } from "@/components/SearchTools";
