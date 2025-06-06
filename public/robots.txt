@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /tools/
+Allow: /about
+Allow: /contact
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://freetoolnow.com/sitemap.xml 

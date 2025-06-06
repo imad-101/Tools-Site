@@ -15,7 +15,7 @@ export default function robots() {
           "/category/",
           "/tag/",
           "/search/",
-          "/tools/*/",
+
           "/404",
           "/500",
         ],
@@ -30,7 +30,7 @@ export default function robots() {
           "/category/",
           "/tag/",
           "/search/",
-          "/tools/*/",
+
           "/404",
           "/500",
         ],
@@ -46,7 +46,7 @@ export default function robots() {
           "/category/",
           "/tag/",
           "/search/",
-          "/tools/*/",
+
           "/404",
           "/500",
         ],
