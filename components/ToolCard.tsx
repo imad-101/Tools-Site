@@ -1,57 +1,74 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Heart, Star, TrendingUp, Share2, ExternalLink } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { useTools } from "@/lib/context/ToolsContext"
-import { ShareDialog } from "./ShareDialog"
+import { useState } from "react";
+import { Heart, Star, TrendingUp, Share2, ExternalLink } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useTools } from "@/lib/context/ToolsContext";
+import { ShareDialog } from "./ShareDialog";
+import { useRouter } from "next/navigation";
 
 interface Tool {
-  name: string
-  description: string
-  icon: any
-  category: string
-  id: string
+  name: string;
+  description: string;
+  icon: any;
+  category: string;
+  id: string;
+  route?: string;
 }
 
 interface ToolCardProps {
-  tool: Tool
-  showCategory?: boolean
-  variant?: "default" | "compact"
+  tool: Tool;
+  showCategory?: boolean;
+  variant?: "default" | "compact";
 }
 
-export function ToolCard({ tool, showCategory = false, variant = "default" }: ToolCardProps) {
-  const { isFavorite, addToFavorites, removeFromFavorites, incrementUsage, getToolRating, toolStats } = useTools()
+export function ToolCard({
+  tool,
+  showCategory = false,
+  variant = "default",
+}: ToolCardProps) {
+  const {
+    isFavorite,
+    addToFavorites,
+    removeFromFavorites,
+    incrementUsage,
+    getToolRating,
+    toolStats,
+  } = useTools();
 
-  const [showShareDialog, setShowShareDialog] = useState(false)
-  const ToolIcon = tool.icon
-  const isToolFavorite = isFavorite(tool.id)
-  const rating = getToolRating(tool.id)
-  const usageCount = toolStats[tool.id]?.usageCount || 0
+  const [showShareDialog, setShowShareDialog] = useState(false);
+  const router = useRouter();
+  const ToolIcon = tool.icon;
+  const isToolFavorite = isFavorite(tool.id);
+  const rating = getToolRating(tool.id);
+  const usageCount = toolStats[tool.id]?.usageCount || 0;
 
   const handleFavoriteToggle = (e: React.MouseEvent) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (isToolFavorite) {
-      removeFromFavorites(tool.id)
+      removeFromFavorites(tool.id);
     } else {
-      addToFavorites(tool.id)
+      addToFavorites(tool.id);
     }
-  }
+  };
 
   const handleToolClick = () => {
-    incrementUsage(tool.id)
-    // Here you would navigate to the tool page or open the tool
-    console.log(`Opening tool: ${tool.name}`)
-  }
+    incrementUsage(tool.id);
+    if (tool.route) {
+      router.push(tool.route);
+    } else {
+      console.log(`Opening tool: ${tool.name}`);
+    }
+  };
 
   const handleShare = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setShowShareDialog(true)
-  }
+    e.stopPropagation();
+    setShowShareDialog(true);
+  };
 
   if (variant === "compact") {
     return (
@@ -64,7 +81,9 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
               className="absolute top-2 right-2 h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
               onClick={handleFavoriteToggle}
             >
-              <Heart className={`h-4 w-4 ${isToolFavorite ? "fill-red-500 text-red-500" : ""}`} />
+              <Heart
+                className={`h-4 w-4 ${isToolFavorite ? "fill-red-500 text-red-500" : ""}`}
+              />
             </Button>
 
             <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-muted to-muted/80 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -78,7 +97,9 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
             {rating > 0 && (
               <div className="flex items-center justify-center mt-1">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                <span className="text-xs text-muted-foreground ml-1">{rating.toFixed(1)}</span>
+                <span className="text-xs text-muted-foreground ml-1">
+                  {rating.toFixed(1)}
+                </span>
               </div>
             )}
 
@@ -90,9 +111,13 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
           </CardContent>
         </Card>
 
-        <ShareDialog isOpen={showShareDialog} onClose={() => setShowShareDialog(false)} tool={tool} />
+        <ShareDialog
+          isOpen={showShareDialog}
+          onClose={() => setShowShareDialog(false)}
+          tool={tool}
+        />
       </>
-    )
+    );
   }
 
   return (
@@ -117,7 +142,9 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
               className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
               onClick={handleFavoriteToggle}
             >
-              <Heart className={`h-4 w-4 ${isToolFavorite ? "fill-red-500 text-red-500" : ""}`} />
+              <Heart
+                className={`h-4 w-4 ${isToolFavorite ? "fill-red-500 text-red-500" : ""}`}
+              />
             </Button>
           </div>
 
@@ -125,9 +152,13 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
             <ToolIcon className="w-6 h-6 text-white" />
           </div>
 
-          <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">{tool.name}</h3>
+          <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
+            {tool.name}
+          </h3>
 
-          <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
+          <p className="text-sm text-muted-foreground mb-4">
+            {tool.description}
+          </p>
 
           {showCategory && (
             <Badge variant="outline" className="mb-3">
@@ -150,14 +181,25 @@ export function ToolCard({ tool, showCategory = false, variant = "default" }: To
             )}
           </div>
 
-          <Button size="sm" className="w-full bg-primary hover:bg-primary/90">
+          <Button
+            size="sm"
+            className="w-full bg-primary hover:bg-primary/90"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleToolClick();
+            }}
+          >
             Use Tool
             <ExternalLink className="w-4 h-4 ml-2" />
           </Button>
         </CardContent>
       </Card>
 
-      <ShareDialog isOpen={showShareDialog} onClose={() => setShowShareDialog(false)} tool={tool} />
+      <ShareDialog
+        isOpen={showShareDialog}
+        onClose={() => setShowShareDialog(false)}
+        tool={tool}
+      />
     </>
-  )
+  );
 }

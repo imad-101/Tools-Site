@@ -1,6 +1,6 @@
-import { Github, Twitter, Linkedin, Mail, Heart, Zap } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Github, Twitter, Linkedin, Mail, Heart, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   const footerLinks = {
@@ -11,31 +11,25 @@ const Footer = () => {
       { name: "Documentation", href: "#" },
     ],
     company: [
-      { name: "About", href: "#" },
+      { name: "About", href: "/about" },
       { name: "Blog", href: "#" },
       { name: "Careers", href: "#" },
-      { name: "Contact", href: "#" },
+      { name: "Contact", href: "/contact" },
     ],
     resources: [
       { name: "Help Center", href: "#" },
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Terms of Service", href: "/terms" },
       { name: "Status", href: "#" },
     ],
-    developers: [
-      { name: "Submit Tool", href: "#" },
-      { name: "API Docs", href: "#" },
-      { name: "GitHub", href: "#" },
-      { name: "Community", href: "#" },
-    ],
-  }
+  };
 
   const socialLinks = [
     { name: "Twitter", icon: Twitter, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
     { name: "GitHub", icon: Github, href: "#" },
     { name: "Email", icon: Mail, href: "#" },
-  ]
+  ];
 
   return (
     <footer className="bg-background border-t border-border/50 mt-16">
@@ -48,14 +42,17 @@ const Footer = () => {
                 <div className="w-8 h-8 bg-gradient-to-r from-accent to-orange-500 rounded-lg flex items-center justify-center shadow-md">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-foreground">ToolHub</span>
+                <span className="text-xl font-bold text-foreground">
+                  Free Tool Now
+                </span>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                The ultimate directory for professional online tools. Discover, explore, and boost your productivity.
+                The ultimate directory for professional online tools. Discover,
+                explore, and boost your productivity.
               </p>
               <div className="flex space-x-3">
                 {socialLinks.map((social) => {
-                  const IconComponent = social.icon
+                  const IconComponent = social.icon;
                   return (
                     <Button
                       key={social.name}
@@ -68,7 +65,7 @@ const Footer = () => {
                         <IconComponent className="w-4 h-4" />
                       </a>
                     </Button>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -121,29 +118,15 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Developers</h3>
-              <ul className="space-y-3">
-                {footerLinks.developers.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
 
         <Separator className="bg-border/50" />
 
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <div className="text-sm text-muted-foreground">© 2024 ToolHub. All rights reserved.</div>
+          <div className="text-sm text-muted-foreground">
+            © 2024 Free Tool Now. All rights reserved.
+          </div>
           <div className="flex items-center text-sm text-muted-foreground">
             Made with
             <Heart className="w-4 h-4 mx-1 text-accent fill-current" />
@@ -152,7 +135,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

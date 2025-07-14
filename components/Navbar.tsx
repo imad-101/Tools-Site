@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,10 +13,11 @@ const Navbar = () => {
   const [navSearchQuery, setNavSearchQuery] = useState("");
 
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "Categories", href: "#categories" },
-    { name: "Popular", href: "#popular" },
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/" },
+    { name: "Categories", href: "/#categories" },
+    { name: "Popular", href: "/#popular" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   // Sample tools for navbar search
@@ -53,22 +55,25 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-foreground">
+            <Link
+              href="/"
+              className="text-xl font-bold text-foreground hover:text-accent transition-colors"
+            >
               Free Tool Now
-            </span>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -119,14 +124,14 @@ const Navbar = () => {
                 />
               </div>
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="block px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
