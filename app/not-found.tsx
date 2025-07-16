@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/header";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import { Home } from "lucide-react";
@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main Content */}
-      <Header />
+      <Navbar />
       <main className="flex-1 py-16 px-6">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Error Information */}
