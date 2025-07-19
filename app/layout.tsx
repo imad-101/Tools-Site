@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeProvider as CustomThemeProvider } from "@/lib/context/ThemeContext";
+import { ToolsProvider } from "@/lib/context/ToolsContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -131,9 +132,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomThemeProvider>
-            {children}
-            <Toaster />
-            <Analytics />
+            <ToolsProvider>
+              {children}
+              <Toaster />
+              <Analytics />
+            </ToolsProvider>
           </CustomThemeProvider>
         </ThemeProvider>
       </body>
