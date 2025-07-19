@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
@@ -33,6 +33,42 @@ const HomePage = () => {
   const { toolStats } = useTools();
   const allTools = getAllTools();
   const categories = getCategories();
+
+  // Handle URL hash navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash === "categories") {
+        setActiveTab("categories");
+        // Smooth scroll to tabs section
+        setTimeout(() => {
+          const tabsSection = document.querySelector("[data-tabs-section]");
+          if (tabsSection) {
+            tabsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      } else if (hash === "popular") {
+        setActiveTab("trending");
+        // Smooth scroll to tabs section
+        setTimeout(() => {
+          const tabsSection = document.querySelector("[data-tabs-section]");
+          if (tabsSection) {
+            tabsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+    };
+
+    // Check hash on component mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   const { filteredAndSortedTools, favoriteTools, recentTools } = useToolsFilter(
     {
@@ -69,8 +105,9 @@ const HomePage = () => {
               value={activeTab}
               onValueChange={setActiveTab}
               className="w-full"
+              data-tabs-section
             >
-              <TabsList className="grid w-full grid-cols-5">
+              <TabsList className="grid w-full grid-cols-5 mb-8">
                 <TabsTrigger value="all">All Tools</TabsTrigger>
                 <TabsTrigger value="favorites">
                   <Heart className="w-4 h-4 mr-1" />

@@ -86,7 +86,7 @@ export function ToolCard({
               />
             </Button>
 
-            <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-muted to-muted/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
               <ToolIcon className="w-6 h-6 text-accent" />
             </div>
 
@@ -148,8 +148,8 @@ export function ToolCard({
             </Button>
           </div>
 
-          <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-r from-accent to-orange-500 flex items-center justify-center">
-            <ToolIcon className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-accent/10 flex items-center justify-center">
+            <ToolIcon className="w-6 h-6 text-accent" />
           </div>
 
           <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">

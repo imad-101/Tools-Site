@@ -1,25 +1,31 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Search, Filter, X, Star } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState } from "react";
+import { Search, Filter, X, Star } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface AdvancedSearchProps {
-  searchQuery: string
-  setSearchQuery: (query: string) => void
-  selectedCategory: string
-  setSelectedCategory: (category: string) => void
-  sortBy: string
-  setSortBy: (sort: string) => void
-  minRating: number
-  setMinRating: (rating: number) => void
-  showFavoritesOnly: boolean
-  setShowFavoritesOnly: (show: boolean) => void
-  categories: string[]
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+  sortBy: string;
+  setSortBy: (sort: string) => void;
+  minRating: number;
+  setMinRating: (rating: number) => void;
+  showFavoritesOnly: boolean;
+  setShowFavoritesOnly: (show: boolean) => void;
+  categories: string[];
 }
 
 export function AdvancedSearch({
@@ -35,19 +41,20 @@ export function AdvancedSearch({
   setShowFavoritesOnly,
   categories,
 }: AdvancedSearchProps) {
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, setShowFilters] = useState(false);
 
   const clearFilters = () => {
-    setSearchQuery("")
-    setSelectedCategory("all")
-    setSortBy("name")
-    setMinRating(0)
-    setShowFavoritesOnly(false)
-  }
+    setSearchQuery("");
+    setSelectedCategory("all");
+    setSortBy("popularity");
+    setShowFavoritesOnly(false);
+  };
 
-  const activeFiltersCount = [selectedCategory !== "all", sortBy !== "name", minRating > 0, showFavoritesOnly].filter(
-    Boolean,
-  ).length
+  const activeFiltersCount = [
+    selectedCategory !== "all",
+    sortBy !== "popularity",
+    showFavoritesOnly,
+  ].filter(Boolean).length;
 
   return (
     <Card className="mb-6">
@@ -80,10 +87,15 @@ export function AdvancedSearch({
 
           {/* Advanced Filters */}
           {showFilters && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t">
               <div>
-                <label className="text-sm font-medium mb-2 block">Category</label>
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <label className="text-sm font-medium mb-2 block">
+                  Category
+                </label>
+                <Select
+                  value={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="All categories" />
                   </SelectTrigger>
@@ -99,32 +111,16 @@ export function AdvancedSearch({
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Sort By</label>
+                <label className="text-sm font-medium mb-2 block">
+                  Sort By
+                </label>
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="name">Name</SelectItem>
                     <SelectItem value="popularity">Popularity</SelectItem>
-                    <SelectItem value="rating">Rating</SelectItem>
                     <SelectItem value="recent">Recently Used</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium mb-2 block">Min Rating</label>
-                <Select value={minRating.toString()} onValueChange={(value) => setMinRating(Number(value))}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0">Any Rating</SelectItem>
-                    <SelectItem value="1">1+ Stars</SelectItem>
-                    <SelectItem value="2">2+ Stars</SelectItem>
-                    <SelectItem value="3">3+ Stars</SelectItem>
-                    <SelectItem value="4">4+ Stars</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -139,7 +135,12 @@ export function AdvancedSearch({
                   <Star className="h-4 w-4 mr-1" />
                   Favorites Only
                 </Button>
-                <Button variant="ghost" size="sm" onClick={clearFilters} className="w-full">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={clearFilters}
+                  className="w-full"
+                >
                   <X className="h-4 w-4 mr-1" />
                   Clear Filters
                 </Button>
@@ -149,5 +150,5 @@ export function AdvancedSearch({
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

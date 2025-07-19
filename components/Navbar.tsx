@@ -20,6 +20,18 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("/#")) {
+      // For hash links, navigate to home page and set hash
+      if (window.location.pathname !== "/") {
+        window.location.href = href;
+      } else {
+        // If already on home page, just update hash
+        window.location.hash = href.substring(2);
+      }
+    }
+  };
+
   // Sample tools for navbar search
   const sampleTools = [
     {
@@ -69,6 +81,12 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => {
+                  if (item.href.startsWith("/#")) {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }
+                }}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
               >
                 {item.name}
@@ -127,8 +145,14 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => {
+                    if (item.href.startsWith("/#")) {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="block px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
