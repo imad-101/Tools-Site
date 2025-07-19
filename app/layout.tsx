@@ -4,6 +4,8 @@ import "@/app/globals.css";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider as CustomThemeProvider } from "@/lib/context/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -122,9 +124,18 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-background antialiased`}
       >
-        {children}
-        <Toaster />
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <CustomThemeProvider>
+            {children}
+            <Toaster />
+            <Analytics />
+          </CustomThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
