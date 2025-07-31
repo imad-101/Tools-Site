@@ -55,7 +55,7 @@ export const toolsData: Record<string, CategoryData> = {
         icon: FileImage,
         category: "HTML Tools",
         id: "html-merger",
-        route: "/html-merger",
+        route: "/merge-html",
       },
     ],
   },
