@@ -21,5 +21,14 @@ export default async function sitemap() {
       url: "https://www.freetoolnow.com/convert-zpl-to-pdf",
       lastModified: new Date(),
     },
+    {
+      url: "https://www.freetoolnow.com/youtube-audio-extractor",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.freetoolnow.com/merge-html",
+      lastModified: new Date(),
+    },
+    
   ];
 }
