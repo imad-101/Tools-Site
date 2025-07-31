@@ -7,7 +7,7 @@ export default function UdfToPdfPage() {
   return (
     <div className="flex min-h-screen flex-col ">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 mx-auto">
         {/* Hero Section */}
         <section className="w-full pt-12 md:pt-16 ">
           <div className="container px-4 md:px-6">

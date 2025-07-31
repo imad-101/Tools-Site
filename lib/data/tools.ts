@@ -1,4 +1,4 @@
-import { FileText, FileImage } from "lucide-react";
+import { FileText, FileImage, Music, FileCode, FileAudio } from "lucide-react";
 
 export interface Tool {
   name: string;
@@ -29,18 +29,48 @@ export const toolsData: Record<string, CategoryData> = {
       {
         name: "UDF to PDF Converter",
         description: "Convert UDF files to PDF format.",
-        icon: FileText,
+        icon: FileCode,
         category: "PDF Tools",
         id: "udf-to-pdf-converter",
         route: "/convert-udf-to-pdf",
       },
       {
         name: "ZPL to PDF Converter",
-        description: "Convert ZPL label files to PDF format.",
-        icon: FileImage,
+        description: "Convert ZPL files to PDF format.",
+        icon: FileCode,
         category: "PDF Tools",
         id: "zpl-to-pdf-converter",
         route: "/convert-zpl-to-pdf",
+      },
+    ],
+  },
+  "HTML Tools": {
+    icon: FileImage,
+    color: "from-purple-500 to-pink-600",
+    description: "Tools for working with HTML documents and files.",
+    tools: [
+      {
+        name: "HTML Document Merger",
+        description: "Merge multiple HTML files easily",
+        icon: FileImage,
+        category: "HTML Tools",
+        id: "html-merger",
+        route: "/html-merger",
+      },
+    ],
+  },
+  "Media Tools": {
+    icon: Music,
+    color: "from-red-500 to-orange-600",
+    description: "Extract and convert audio from various media sources.",
+    tools: [
+      {
+        name: "YouTube Audio Extractor",
+        description: "Extract audio from YouTube videos easily.",
+        icon: FileAudio,
+        category: "Media Tools",
+        id: "youtube-audio-extractor",
+        route: "/youtube-audio-extractor",
       },
     ],
   },
