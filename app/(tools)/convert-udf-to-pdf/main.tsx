@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 type FileMetadata = {
   name: string;
@@ -17,16 +17,44 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
+  // Cleanup download URL on unmount
+  useEffect(() => {
+    return () => {
+      if (downloadUrl) {
+        URL.revokeObjectURL(downloadUrl);
+      }
+    };
+  }, [downloadUrl]);
+
   // Process file from input or drop
   const handleNewFile = (selected: File) => {
+    // Reset previous state
+    setError("");
+    setDownloadUrl("");
+    
+    // Validate file extension
     if (!selected.name.toLowerCase().endsWith(".udf")) {
       setError("Please select a .udf file.");
       resetAll();
       return;
     }
-    setError("");
+    
+    // Validate file size (max 10MB for safety)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (selected.size > maxSize) {
+      setError("File is too large. Please select a file smaller than 10MB.");
+      resetAll();
+      return;
+    }
+    
+    // Check if file is empty
+    if (selected.size === 0) {
+      setError("The selected file appears to be empty.");
+      resetAll();
+      return;
+    }
+    
     setFile(selected);
-    setDownloadUrl("");
 
     // Build file metadata info
     const meta: FileMetadata = {
@@ -41,7 +69,16 @@ export default function HomePage() {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      setFileContentPreview(result.slice(0, 1024));
+      // Clean the preview text to remove non-printable characters
+      const cleanPreview = result
+        .slice(0, 1024)
+        .replace(/[\x00-\x1F\x7F-\x9F]/g, ' ') // Replace control characters with spaces
+        .replace(/\s+/g, ' ') // Normalize whitespace
+        .trim();
+      setFileContentPreview(cleanPreview || "File content appears to contain non-readable characters.");
+    };
+    reader.onerror = () => {
+      setFileContentPreview("Unable to read file content for preview.");
     };
     reader.readAsText(selected);
   };
@@ -51,6 +88,10 @@ export default function HomePage() {
     setFile(null);
     setMetadata(null);
     setFileContentPreview("");
+    // Clean up the previous download URL
+    if (downloadUrl) {
+      URL.revokeObjectURL(downloadUrl);
+    }
     setDownloadUrl("");
     setError("");
     setLoading(false);
@@ -94,15 +135,22 @@ export default function HomePage() {
       });
 
       if (!response.ok) {
-        throw new Error("Conversion failed. Please try again.");
+        // Try to get error details from response
+        try {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Conversion failed. Please try again.");
+        } catch {
+          throw new Error(`Conversion failed with status ${response.status}. Please try again.`);
+        }
       }
+      
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
     } catch (err: unknown) {
-      setError(
-        err instanceof Error ? err.message : "An unexpected error occurred"
-      );
+      const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
+      setError(errorMessage);
+      console.error("Conversion error:", err);
     } finally {
       setLoading(false);
     }

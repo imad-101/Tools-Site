@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
 
 export default function HtmlMerger() {
@@ -14,6 +15,8 @@ export default function HtmlMerger() {
   const [isMerging, setIsMerging] = useState(false);
   const [mergedHtml, setMergedHtml] = useState<string>("");
   const [fileName, setFileName] = useState("merged-document");
+  const [mergingProgress, setMergingProgress] = useState(0);
+  const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -42,7 +45,97 @@ export default function HtmlMerger() {
         return;
       }
       
+      // Validate file types more strictly
+      const invalidFiles = newFiles.filter(file => {
+        const extension = file.name.toLowerCase().split('.').pop();
+        return !['html', 'htm'].includes(extension || '');
+      });
+      
+      if (invalidFiles.length > 0) {
+        toast({
+          title: "Invalid File Type",
+          description: "Only .html and .htm files are supported.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Check for duplicate filenames
+      const existingNames = files.map(f => f.name.toLowerCase());
+      const duplicates = newFiles.filter(file => 
+        existingNames.includes(file.name.toLowerCase())
+      );
+      
+      if (duplicates.length > 0) {
+        toast({
+          title: "Duplicate Files",
+          description: `File "${duplicates[0].name}" is already added.`,
+          variant: "destructive"
+        });
+        return;
+      }
+      
       setFiles(prev => [...prev, ...newFiles]);
+      
+      // Clear the input to allow re-selecting the same files
+      if (e.target) {
+        e.target.value = '';
+      }
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    if (droppedFiles.length > 0) {
+      // Validate dropped files directly
+      const validFiles = droppedFiles.filter(file => {
+        const extension = file.name.toLowerCase().split('.').pop();
+        return ['html', 'htm'].includes(extension || '');
+      });
+      
+      if (validFiles.length !== droppedFiles.length) {
+        toast({
+          title: "Invalid File Type",
+          description: "Only .html and .htm files are supported.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Check limits and add files
+      if (files.length + validFiles.length > 10) {
+        toast({
+          title: "File Limit Exceeded",
+          description: "You can merge up to 10 files at once.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      const oversized = validFiles.filter(file => file.size > 5 * 1024 * 1024);
+      if (oversized.length > 0) {
+        toast({
+          title: "File Too Large",
+          description: "Each file must be smaller than 5MB.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      setFiles(prev => [...prev, ...validFiles]);
     }
   };
 
@@ -77,37 +170,79 @@ export default function HtmlMerger() {
     setIsMerging(true);
     
     try {
+      // Calculate total size to prevent memory issues
+      const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+      const maxTotalSize = 50 * 1024 * 1024; // 50MB total limit
+      
+      if (totalSize > maxTotalSize) {
+        toast({
+          title: "Total Size Too Large",
+          description: "Combined file size exceeds 50MB limit. Please reduce file sizes.",
+          variant: "destructive"
+        });
+        return;
+      }
+
       let combinedHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${fileName}</title>
+  <title>${fileName || 'merged-document'}</title>
   <style>
     /* Reset and base styles */
-    body { margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .document-section { margin-bottom: 40px; page-break-inside: avoid; }
+    body { margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    .document-section { margin-bottom: 40px; page-break-inside: avoid; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+    .document-section:last-child { border-bottom: none; margin-bottom: 0; }
+    .section-header { background: #f8fafc; padding: 10px; margin-bottom: 20px; border-radius: 4px; font-weight: bold; color: #475569; }
   </style>
 </head>
 <body>`;
 
-      for (const file of files) {
-        const text = await file.text();
+      // Process files with memory management
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        setMergingProgress(Math.round(((i + 1) / files.length) * 100));
         
-        // Extract body content
-        const bodyStart = text.indexOf("<body");
-        const bodyEnd = text.indexOf("</body>");
-        
-        if (bodyStart !== -1 && bodyEnd !== -1) {
-          const bodyContent = text.substring(
-            text.indexOf(">", bodyStart) + 1,
-            bodyEnd
-          ).trim();
+        try {
+          const text = await file.text();
           
-          combinedHtml += `\n  <div class="document-section">\n${bodyContent}\n  </div>`;
-        } else {
-          // If no body tags found, use entire content
-          combinedHtml += `\n  <div class="document-section">\n${text}\n  </div>`;
+          // Sanitize filename for display
+          const sanitizedName = file.name.replace(/[<>]/g, '');
+          
+          // Extract body content with better parsing
+          const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+          let content = '';
+          
+          if (bodyMatch) {
+            content = bodyMatch[1].trim();
+          } else {
+            // Remove html, head, and doctype if present
+            content = text
+              .replace(/<!DOCTYPE[^>]*>/gi, '')
+              .replace(/<html[^>]*>/gi, '')
+              .replace(/<\/html>/gi, '')
+              .replace(/<head[\s\S]*?<\/head>/gi, '')
+              .replace(/<\/?body[^>]*>/gi, '')
+              .trim();
+          }
+          
+          // Add section with header
+          combinedHtml += `\n  <div class="document-section">
+    <div class="section-header">Document ${i + 1}: ${sanitizedName}</div>
+${content}
+  </div>`;
+          
+          // Yield control to prevent blocking
+          if (i < files.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+          }
+        } catch (fileError) {
+          console.error(`Error processing file ${file.name}:`, fileError);
+          combinedHtml += `\n  <div class="document-section">
+    <div class="section-header">Document ${i + 1}: ${file.name} (Error)</div>
+    <p style="color: #ef4444;">Error reading file: ${file.name}</p>
+  </div>`;
         }
       }
 
@@ -116,38 +251,109 @@ export default function HtmlMerger() {
       
       toast({
         title: "Merge Successful",
-        description: "Your HTML files have been combined successfully.",
+        description: `Successfully merged ${files.length} HTML files.`,
       });
     } catch (error) {
       toast({
         title: "Merge Failed",
-        description: "An error occurred while merging files.",
+        description: error instanceof Error ? error.message : "An error occurred while merging files.",
         variant: "destructive"
       });
       console.error("Merge error:", error);
     } finally {
       setIsMerging(false);
+      setMergingProgress(0);
     }
   };
 
   const downloadMergedFile = () => {
-    const blob = new Blob([mergedHtml], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${fileName}.html`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    if (!mergedHtml) {
+      toast({
+        title: "No Content",
+        description: "No merged content available to download.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      // Sanitize filename
+      const sanitizedFileName = (fileName || 'merged-document')
+        .replace(/[^a-zA-Z0-9\-_\s]/g, '')
+        .replace(/\s+/g, '-')
+        .substring(0, 100);
+      
+      const blob = new Blob([mergedHtml], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${sanitizedFileName}.html`;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Clean up the URL object
+      setTimeout(() => URL.revokeObjectURL(url), 100);
+      
+      toast({
+        title: "Download Started",
+        description: `File "${sanitizedFileName}.html" is being downloaded.`,
+      });
+    } catch (error) {
+      toast({
+        title: "Download Failed",
+        description: "Failed to download the merged file.",
+        variant: "destructive"
+      });
+      console.error("Download error:", error);
+    }
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(mergedHtml);
-    toast({
-      title: "Copied to Clipboard",
-      description: "The merged HTML is ready for pasting.",
-    });
+  const copyToClipboard = async () => {
+    if (!mergedHtml) {
+      toast({
+        title: "No Content",
+        description: "No merged content available to copy.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      // Check if clipboard API is available
+      if (!navigator.clipboard) {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = mergedHtml;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        toast({
+          title: "Copied to Clipboard",
+          description: "The merged HTML is ready for pasting.",
+        });
+        return;
+      }
+
+      await navigator.clipboard.writeText(mergedHtml);
+      toast({
+        title: "Copied to Clipboard",
+        description: "The merged HTML is ready for pasting.",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Failed to copy content to clipboard. Please try the download option instead.",
+        variant: "destructive"
+      });
+      console.error("Copy error:", error);
+    }
   };
 
   return (
@@ -159,8 +365,15 @@ export default function HtmlMerger() {
         <CardContent>
           {/* File Upload Area */}
           <div 
-            className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors mb-6"
+            className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors mb-6 ${
+              isDragOver 
+                ? 'border-blue-400 bg-blue-50' 
+                : 'border-slate-300 bg-slate-50 hover:bg-slate-100'
+            }`}
             onClick={() => fileInputRef.current?.click()}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
           >
             <div className="flex flex-col items-center justify-center gap-2">
               <FileText className="w-12 h-12 text-slate-400" />
@@ -298,6 +511,13 @@ export default function HtmlMerger() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span>Processing files...</span>
+                  <span>{mergingProgress}%</span>
+                </div>
+                <Progress value={mergingProgress} className="h-2" />
+              </div>
               <Skeleton className="h-4 w-full" />
               <Skeleton className="h-4 w-3/4" />
               <Skeleton className="h-4 w-5/6" />
